@@ -1,6 +1,25 @@
+/*********************** GLOBAL ****************************/
+/* Here are the global rules, used everywhere on the pages */
+
+html {
+	font-family: sans-serif;
+}
 body {
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont,
-	"Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif,
-	"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 18px;
+	margin:10;
+}
+
+/* Links are underlined only when the cursor is over them */
+a {
+    text-decoration: none;
+}
+a:link {
+    color: blue;
+}
+a:visited {
+    color: purple;
+}
+a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    background: #ccf;
 }
