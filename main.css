@@ -1,25 +1,74 @@
 /*********************** GLOBAL ****************************/
-/* Here are the global rules, used everywhere on the pages */
+/* Here are the global rules, used in all the pages        */
 
-html {
-	font-family: sans-serif;
-}
 body {
-	margin:10;
+  margin: 0.5em;
+  font-size: 1em;
+  font-family: sans-serif;
+}
+.highlight {
+  background: #ccf;
+  border-bottom: 0.1em solid #999;
+}
+#page-header { 
+  border-bottom: 0.1em solid #999;
+  background: #ddd;
+}
+#page-footer {
+  border-top: 0.1em solid #999;
+  background: #ddd;
+}
+#page-wrap {
+  margin: 2.5em;
+}
+#disclaimer {
+  font: italic;
+  font-weight: bold;
+  color: darkred;
+  text-decoration: underline;
+}
+#pic {
+  float: right;
+  margin: -30px 0 5 0;
+  max-width:350px;
+  border: 3px;
+  border-radius: 5px;
 }
 
-/* Links are underlined only when the cursor is over them */
+/* Links and abbreviations are underlined only when the cursor is over them */
 a {
-    text-decoration: none;
+  text-decoration: none;
+  font-weight: bold;
 }
 a:link {
-    color: blue;
+  color: blue;
 }
 a:visited {
-    color: purple;
+  color: blue;
 }
 a:hover {
-    text-decoration: underline;
-    font-weight: bold;
-    background: #ccf;
+  text-decoration: underline;
+  background: #ccf;
+}
+abbr {
+  text-decoration: underline;
+  background: #ccc;
+}
+
+/* Code is also pretty */
+pre {
+  background: #f4f4f4;
+  border: 0.3em solid #ddd;
+  border-left: 0.3em solid navy;
+  color: #333;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 1.3em;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 80%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  word-wrap: break-word;
 }
