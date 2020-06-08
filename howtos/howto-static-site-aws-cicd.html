@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="howto, aws, ci/cd, s3, codepipeline, github, route53, ssl, cloudfront">
+  <meta name="reading_time" content="00:08:05">
+  <meta name="word_count" content="2024">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>How to build a static website on AWS in 5 easy steps</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tutorials</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>Posted on June 8, 2020 - 8 minute read</h6>
+
+<h1>How to build a static website on AWS in 5 easy steps</h1>
+<h2 class="highlight">Backstory</h2>
+<p>
+I spent so many years procrastinating and failing attempts at blogging. All the beautiful things I could do overwhelmed me. And then I remember how bad I am at keeping the writing pace I was setting up for myself. Inspired by <a href="http://njrusmc.net/" target="_blank">Nick Russo</a>'s minimalist approach, I finally pushed my content to AWS.
+</p>
+<p>
+Interestingly enough, I was very pleased to find that I was not the only person doing this. So much that there is a 
+<a href="https://twitter.com/hashtag/CloudResumeChallenge" target="_blank">#CloudResumeChallenge</a> going around. This is an initiative from 
+<a href="https://forrestbrazeal.com/2020/04/23/the-cloud-resume-challenge/" target="_blank">Forrest Brazeal</a>. He helps people show concrete cloud skills that could land them their next job. Please refer to Forrest's guidelines to take part in the challenge, because this is so cool!
+</p>
+<p>
+I already have IT experience, which disqualifies me. But since my initial goal was to simply put my website out there, here are the steps I took to get the same results.
+</p>
+
+<ol>
+  <li><a href="#step_one">Create a S3 bucket and configure it as static website</a></li>
+  <li><a href="#step_two">Create a pipeline for automated deployments</a></li>
+  <li><a href="#step_three">Create a SSL certificate</a></li>
+  <li><a href="#step_four">Create a CloudFront distribution</a></li>
+  <li><a href="#step_five">Configure the DNS management</a></li>
+</ol>
+
+<div id="disclaimer">DISCLAIMER: people tend to forget the official documentation. It is free and available on AWS white pages. If you're a nerd like me and want to learn the details, check out how to <a href="https://aws.amazon.com/getting-started/hands-on/host-static-website/" target="_blank">Host a Static Website</a> right from the source.</div>
+
+<h2 class="highlight">Step Zero : Domain name, content and format</h2>
+
+<h3>Purchase a domain name</h3>
+<p>
+Nobody will remember that huge public S3 url when trying to access your website. <b>Not even yourself.</b>
+</p><p>
+So get an unique name people can type. Most domains cost $9 to $18 a year and there are plenty of resources available. Google, for example, has its own domain site. It is easy to use with tons of tutorials and an extensive FAQ resources section.
+</p><p>
+If you want to keep everything within AWS, go with <a href="https://aws.amazon.com/route53/" target="_blank">Route 53</a>. Here you can buy a domain name from inside the AWS console.
+</p>
+<h3>Create and format your content</h3>
+<p>
+Create a content. If you don't know what to write, create a resume. It's simple, direct and look a lot cooler than only having a LinkedIn profile.
+</p><p>
+Format it as you like, but if you are short on HTML/CSS skills, the Internet is full of templates. I recommend you to check out <a href="https://www.w3schools.com/" target="_blank">W3Schools</a> and <a href="https://www.freecodecamp.org/" target="_blank">freeCodeCamp</a>. Harness the front-end dev that lives in you!
+</p>
+<h3>Create an AWS account for access to S3</h3><p>Duh.</p>
+
+<h2 id="step_one" class="highlight">Step 1 : Create a S3 bucket and configure it as static website</h2>
+<h3>Create a S3 bucket</h3>
+<p>
+Okay, on to the fun part! First thing we need is a S3 bucket.
+</p><p>
+It is critical that your bucket has the same name as your domain name. If your website domain is <i>mywebsite.com</i>, then your bucket name must be <i>mywebsite.com</i>.
+</p><p>
+The reasoning for this has to do with how requests are routed to S3. The request comes into the bucket, and then S3 uses the Host header to route to the appropriate bucket.
+</p>
+<pre>
+aws s3 mb s3://mywebsite.com
+</pre>
+<dl><small>AWS Console</small>
+  <dt>Navigate to S3 in the AWS Console.</dt>
+  <dt>Click <b>Create bucket</b>.</dt>
+  <dt>Input the name for the bucket and choose a region to host it.</dt>
+  <dt>Click <b>Next</b> to go to the next panel.</dt>
+  <dt>Click <b>Next</b> - leave the <b>Configure options</b> panel as is.</dt>
+  <dt>Click <b>Next</b> - leave the <b>Set permissions</b> panel as is (we'll deal with it later).</dt>
+  <dt>Click <b>Create bucket</b> (yeah, it is that easy)</dt>
+  <dt>Voilà! Bucket created!</dt>
+  <dt><img src="../img/aws-s3-create-bucket.png" title="Create a S3 bucket" alt="S3 bucket creation" id="sshot"/></dt>
+</dl>
+
+<h3>Set the bucket to versioning</h3>
+<p>
+This step is kinda optional, but good to do anyway. Versioning your bucket ensures every object there has previous versions available to restore.
+</p>
+<pre>
+aws s3api put-bucket-versioning --bucket mywebsite.com --versioning-configuration Status=Enabled
+</pre>
+<dl><small>AWS Console</small>
+  <dt>Navigate to S3 in the AWS Console.</dt>
+  <dt>Click into your bucket.</dt>
+  <dt>Click the <b>Properties</b> section.</dt>
+  <dt>Click the <b>Versioning</b> option.</dt>
+  <dt>Select <b>Enable Versioning</b>.</dt>
+  <dt>Click <b>Save</b>.</dt>
+  <dt><img src="../img/aws-s3-versioning-bucket.png" title="Versioning a S3 bucket" alt="S3 bucket versioning" id="sshot"/></dt>
+</dl>
+
+<h3>Set the bucket as static website</h3>
+<p>
+Your S3 bucket should act like a static website, not a normal bucket. Let's set it up as such.
+</p>
+<pre>
+aws s3 website s3://mywebsite.com/ --index-document index.html --error-document error.html
+</pre>
+<dl><small>AWS Console</small>
+  <dt>Navigate to S3 in the AWS Console.</dt>
+  <dt>Click into your bucket.</dt>
+  <dt>Click the <b>Properties</b> section.</dt>
+  <dt>Click the <b>Static website hosting</b> option.</dt>
+  <dt>Select <b>Use this bucket to host a website</b>.</dt>
+  <dt>Enter <i>index.html</i> as the Index document.</dt>
+  <dt>Click <b>Save</b>.</dt>
+  <dt><img src="../img/aws-s3-website-bucket.png" title="Static website hosting" alt="S3 bucket setup to website hosting" id="sshot"/></dt>
+</dl>
+
+<p>
+You now have an <b>Endpoint</b> address. It is a S3 website url like this <i>http://mywebsite.com.s3-website-us-east-1.amazonaws.com/</i>.
+</p>
+
+<h3>Set bucket permissions : public access</h3>
+<p>
+Your bucket serves your static website, so it must be accessible to anyone in the world. We call this anonymous access to the bucket.
+</p>
+By default, public access is denied to any new buckets created. Because, you know, public buckets are an unnecessary exposure. Yet, for our static website, we need a public access bucket policy. You must complete this step before adding the bucket policy.
+
+<pre>
+aws s3api put-public-access-block --bucket mywebsite.com --public-access-block-configuration '{"BlockPublicPolicy": false, "RestrictPublicBuckets": false}'
+</pre>
+<dl><small>AWS Console</small>
+  <dt>Click into your bucket.</dt>
+  <dt>Select the <b>Permissions</b> tab at the top.</dt>
+  <dt>Under <b>Block Public Access</b>, click <b>Edit</b>.</dt>
+  <dt>Turn <b>off</b> <i>"Block public access to buckets and objects granted through new public bucket or access point policies"</i></dt>
+  <dt>Turn <b>off</b> <i>"Block public and cross-account access to buckets and objects through any public bucket or access point policies"</i></dt>
+  <dt>Leave the other permissions blocked <b>on</b>, and <b>Save</b>.</dt>
+  <dt>Confirm the operation by typing <b>confirm</b> in the alert window and click <b>Confirm</b>.</dt>
+  <dt><img src="../img/aws-s3-permission-bucket.png" title="Setup bucket permissions" alt="S3 bucket permissions" id="sshot"/></dt>
+</dl>
+
+<h3>Set bucket permissions : policy</h3>
+<p>
+Now let's update the Bucket Policy to allow public read access to anyone in the world. AWS works with JSON format for its configuration. You can have your .json file uploaded from the CLI or add it to the Console.
+
+<pre>
+aws s3api put-bucket-policy --bucket mywebsite.com --policy file://policy.json
+</pre>
+<dl><small>AWS Console</small>
+  <dt>Still inside the <b>Permissions</b> section.</dt>
+  <dt>Select <b>Bucket Policy</b>.</dt>
+  <dt>Add the JSON code to the Bucket Policy.</dt>
+  <dt><b>Save</b> and your bucket is now public.</dt>
+  <dt><img src="../img/aws-s3-policy-bucket.png" title="Create a S3 bucket policy" alt="S3 bucket policy" id="sshot"/></dt>
+</dl>
+
+<b>Bucket policy example:</b>
+<pre>
+{
+    "Version": "2008-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::mywebsite.com/*"
+        }
+    ]
+}
+</pre>
+<div id="disclaimer">DISCLAIMER: This policy opens up your bucket to the world. Any object in this bucket is available to the public now. Don’t put anything in this bucket that you’re not willing to share!</div>
+
+<h3>Upload your content to the bucket</h3>
+<p>
+Copy all the files for your website into the bucket. The root page of your website (index.html) should be at the root level of the S3 bucket.
+</p>
+<pre>
+aws s3 cp local_folder/mywebsite/ s3://mywebsite.com/ --recursive
+</pre>
+<dl><small>AWS Console</small>
+  <dt>Navigate to S3 in the AWS Console.</dt>
+  <dt>Click into your bucket.</dt>
+  <dt>Click the <b>Upload</b> button.</dt>
+  <dt>Drag and drop or select <b>Add files</b>, add the entire static website directory.</dt>
+  <dt>No need to configure permissions for the files, we did that for the bucket. Click <b>Upload</b>.</dt>
+  <dt><img src="../img/aws-s3-upload-files.png" title="Upload files to a S3 bucket" alt="S3 bucket upload files" id="sshot"/></dt>
+</dl>
+
+<h3>Check if the bucket is accessible</h3>
+<p>
+Remember that <b>Endpoint</b> address? The one you got when you enabled the static website hosting? You can use it now to check if your website is available.
+</p>
+
+<h2 id="step_two" class="highlight">Step 2 : Create a pipeline for automated deployments</h2>
+<p>
+So far, every time we update a page or write a new blog post, we have to reflect that to our bucket. As fun as it is, uploading files by hand gets old fast!
+</p>
+<p>
+So why not automate it? Let's setup Git repository with <a href="https://aws.amazon.com/codecommit/" target="_blank">CodeCommit</a>. And then a pipeline in <a href="https://aws.amazon.com/codepipeline/" target="_blank">CodePipeline</a> to deploy our code to the S3 bucket when we push to Git.
+
+<h3>Setup a repository in CodeCommit</h3>
+<dl><small>AWS Console</small>
+  <dt>Make sure to have the <a href="https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-gc.html" target="_blank">required IAM credentials</a> to CodeCommit beforehand.</dt>
+  <dt>Navigate to CodeCommit in the AWS Console.</dt>
+  <dt>Click <b>Create repository</b>.</dt>
+  <dt>Click <b>Create</b>.</dt>
+  <dt><img src="../img/aws-codecommit-create-repo.png" title="Creating a CodeCommit repository" alt="CodeCommit repo" id="sshot"/></dt>
+</dl>
+
+<h3>Setup a pipeline in CodePipeline</h3>
+<dl><small>AWS Console</small>
+  <dt>Navigate to CodePipeline in the AWS Console.</dt>
+  <dt>Click <b>Create pipeline</b>.</dt>
+  <dt>Enter a <b>name</b> for your pipeline.</dt>
+  <dt>Select <b>New service role</b>.</dt>
+  <dt>Role name will fill out with something like <i>AWSCodePipelineServiceRole-us-east-1-mywebsite-pipeline</i></dt>
+  <dt>If not, check the box for <b>Allow AWS CodePipeline to create a service role</b>.</dt>
+  <dt>Click <b>Next</b>.</dt>
+  <dt><img src="../img/aws-codepipeline-create-pipeline.png" title="Create pipeline" alt="Create pipeline" id="sshot"/></dt>
+</dl>
+<dl>
+  <dt>Select <b>AWS CodeCommit</b> as source provider.</dt>
+  <dt>Select the repository name.</dt>
+  <dt>Select the <b>master</b> branch.</dt>
+  <dt>Select <b>CodePipeline</b> as the option for change detection.</dt>
+  <dt>Click <b>Next</b>.</dt>
+  <dt><img src="../img/aws-codepipeline-pipeline-source.png" title="Pipeline pulls source from CodeCommit" alt="CodeCommit source" id="sshot"/></dt>
+</dl>
+<dl>
+  <dt>Selection of a build stage is optional. As we didn't setup any, click <b>Skip build stage</b>.</dt>
+  <dt>Select <b>Amazon S3</b> as deploy provider.</dt>
+  <dt>Select the same <b>region</b> of the S3 bucket.</dt>
+  <dt>Select the bucket name.</dt>
+  <dt>Check the box for <b>Extract the file before deploy</b></dt>
+  <dt>Click <b>Next</b> and then <b>Create pipeline</b>.</dt>
+  <dt><img src="../img/aws-codepipeline-pipeline-deploy.png" title="Deploying pipeline to S3" alt="S3 deploy" id="sshot"/></dt>
+</dl>
+
+<h3 class="highlight">Alternative step: use GitHub instead</h3>
+The steps are the same as with CodeCommit, the difference is the <b>source</b> selected.
+<dl><small>AWS Console</small>
+  <dt>Select <b>GitHub</b> as source provider.</dt>
+  <dt>Click on the <b>Connect to GitHub</b> button. That will connect to your GitHub account.</dt>
+  <dt>Select the repository name.</dt>
+  <dt>Select the <b>master</b> branch.</dt>
+  <dt>Select <b>GitHub webhooks</b> as the option for change detection.</dt>
+  <dt>Click <b>Next</b>.</dt>
+  <dt>Selection of a build stage is optional. As we didn't setup any, click <b>Skip build stage</b>.</dt>
+  <dt><img src="../img/aws-codecommit-github-repo.png" title="Using GitHub repository" alt="GitHub repo" id="sshot"/></dt>
+</dl>
+
+<h2 id="step_three" class="highlight">Step 3 : Create a SSL certificate</h2>
+<p>
+We don't want only a website. We want a SECURE website. Don't you feel good seeing the little <i>"Connection is secure"</i> on your address bar? To allow access through HTTPS, we need to create a SSL certificate first.
+</p>
+<dl><small>AWS Console</small>
+  <dt>Navigate to Certificate Manager in the AWS Console.</dt>
+  <dt>Click <b>Request a certificate</b>.</dt>
+  <dt>Select <b>Request a public certificate</b> and then click on <b>Request a certificate</b>.</dt>
+  <dt>Add your domain name. Make sure you request a certificate for *.yourdomain.com so it covers all sub-domains. Click <b>Next</b>.</dt>
+  <dt>You must be the owner of this domain, select the <b>Email validation</b> to confirm. Click <b>Next</b>.</dt>
+  <dt>Give it a "Name" tag to identify the certificate on your dashboard, click <b>Review</b>.</dt>
+  <dt>Confirm and request. It can take a few moments to complete the validation.</dt>
+  <dt><img src="../img/aws-create-certificate.png" title="Create a SSL certificate" alt="ACM" id="sshot"/></dt>
+</dl>
+
+<h2 id="step_four" class="highlight">Step 4 : Create a CloudFront distribution</h2>
+<p>
+Now we need distribute our content. CloudFront Distribution is here for this. 
+</p>
+<dl><small>AWS Console</small>
+  <dt>Navigate to CloudFront in the AWS Console.</dt>
+  <dt>Click <b>Create distribution</b>.</dt>
+  <dt>Select <b>Web</b> as the delivery method. Click <b>Get Started</b>.</dt>
+  <dt>Origin Domain Name: select your <b>S3 bucket</b>.</dt>
+  <dt><img src="../img/aws-cloudfront-origin.png" title="CloudFront" alt="CloudFront" id="sshot"/></dt>
+</dl>
+<dl>
+  <dt>Viewer protocol policy: <b>Redirect HTTP to HTTPS</b>.</dt>
+  <dt>Allowed HTTP Methods: <b>GET, HEAD, OPTIONS</b>.</dt>
+  <dt><img src="../img/aws-cloudfront-cache.png" title="CloudFront" alt="CloudFront" id="sshot"/></dt>
+</dl>
+<dl>
+  <dt>Alternating domain names: add your domain name, i.e. <i>mywebsite.com</i></dt>
+  <dt>Select <b>Custom SSL Certificate</b> and select the certificate you created. Make sure the certificate is already validated.</dt>
+  <dt><b>Create Distribution</b></dt>
+  <dt><img src="../img/aws-cloudfront-domain.png" title="CloudFront" alt="CloudFront" id="sshot"/></dt>
+</dl>
+
+<h2 id="step_five" class="highlight">Step 5 : Config the DNS management</h2>
+<p>
+We have all the backstage ready, now let's release it to the world! For that, we need to let your domain to pull the content. That's what the DNS is for.
+</p>
+
+<dl><small>AWS Console</small>
+  <dt>Navigate to Route53 in the AWS Console.</dt>
+  <dt>Go to Hosted Zone. Click <b>Create Hosted Zone</b></dt>
+  <dt>Enter in your domain name without the www (e.g. example.com). Click <b>Create</b>.</dt>
+  <dt>That will give you the default record sets (the cluster of 4 NS-type). You will need to create two more custom record sets.</dt>
+  <dt>Click <b>Create Record Set</b>.</dt>
+  <dt>Select <b>Yes</b> for Alias.</dt>
+  <dt>Set your Alias Target to point to your <b>CloudFront distribution</b> and Create.</dt>
+  <dt>Create another Record Set. Redirect to the same Alias Target. But this time, add <i>www</i> to the "Name" field so it will point to your domain <i>www.mywebsite.com</i>.</dt>
+  <dt><img src="../img/aws-route53-create.png" title="Route 53" alt="Route 53" id="sshot"/></dt>
+</dl>
+
+<h3 class="highlight">Extra step : Transfer an existing domain to AWS</h3>
+<p>
+If you are like me, you may have purchased a domain with Google before you figured out Amazon could do it too. So how to make AWS use the DNS for your domain, then? Tell Google to send all requests to your website in AWS!
+</p>
+<dl>
+  <dt>Log into <a href="https://domains.google.com" target="_blank">Google Domains</a></dt>
+  <dt>Click on your domain.</dt>
+  <dt>Click on the <b>DNS</b> menu.</dt>
+  <dt>Select <b>Use Custom Name Servers</b> instead of the default Google Domains.</dt>
+  <dt>Click on the <b>+</b> button 3 more times to get a total of 4 text fields.</dt>
+  <dt>Copy and paste each Name Server (NS) from the Route 53-Record Sets panel.</dt>
+  <dt><img src="../img/gcp-domains-custom.png" title="Google Domains" alt="Google Domains" id="sshot"/></dt>
+</dl>
+
+The site should be available almost immediately. Yet, it can take some time for DNS to propagate around the world.
+
+<h2 class="highlight">Bonus : Visitor counter</h2>
+<p>
+I didn't put in place a visitor counter yet, that's not my priority right now. But if you are here for the challenge, I recommend you check the <a href="https://www.reddit.com/r/aws/comments/gjl5wi/i_wrote_a_guide_on_building_your_own_resume_site" target="_blank">reddit thread</a>. There are good tips and references there that can help you.
+</p>
+
+<h2 class="highlight">Conclusion</h2>
+<p>
+You did it! You’ve got a static website that updates on Git push. And it is served over HTTPs! That will be a nice example of your skills for future employers. Nice!
+</p>
+<p>
+I hope that this post helped get started with AWS by doing something cool.
+</p>
+</div>
+
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tutorials</a>
+</div>
+</body>
+</html>
