@@ -10,7 +10,7 @@ body {
   background: #ccf;
   border-bottom: 0.1em solid #999;
 }
-#page-header { 
+#page-header {
   border-bottom: 0.1em solid #999;
   background: #ddd;
 }
@@ -37,10 +37,21 @@ body {
 #sshot {
   float: left;
   margin: -30px 0 5 0;
-/*  max-width:350px;*/
   max-width:100%;
   border: 3px;
   border-radius: 5px;
+}
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* Links and abbreviations are underlined only when the cursor is over them */

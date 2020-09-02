@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="howto, packet tracer, cisco, lab, aws, ec2, remote">
+  <meta name="reading_time" content="00:01:52">
+  <meta name="word_count" content="467">
+  <meta name="char_count" content="2817">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>How to setup Cisco Packet Tracer on a remote server</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tutorials</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>Posted on September 2, 2020 - 2 minute read</h6>
+
+<h1>How to setup Cisco Packet Tracer on a remote server</h1>
+This is the companion article to <a href="howto-network-lab-remote-server.html">
+  How to setup GNS3 on a remote server</a> and its
+  <a href="https://www.youtube.com/embed/JZQOX3Bj9dY">video</a>.
+
+<ol>
+  <li><a href="#step_one">Launch an EC2 instance</a></li>
+  <li><a href="#step_two">Install Cisco Packet Tracer on the instance</a></li>
+  <li><a href="#step_three">Enjoy!</a></li>
+  <li><a href="#step_four">But before you go... save your work!</a></li>
+</ol>
+
+<h2 class="highlight">Step Zero : Requirements</h2>
+
+  <ul>
+    <li>An <a href="https://aws.amazon.com/getting-started/" target="_blank">AWS account</a></li>
+    <li>A Cisco <a href="http://netacad.com" target="_blank">Network Academy</a> account</li>
+    <li>A RDP client of your choice</li>
+  </ul>
+
+<h2 id="step_one" class="highlight">Step 1 : Launch an EC2 instance</h2>
+
+<dl><big>Launch a Windows instance</big>
+  <dt>Navigate to EC2 in the AWS Console.</dt>
+  <dt>Click <b>Launch Instance</b>.</dt>
+  <dt>Select a free-tier elegible <b>Windows</b> image.</dt>
+  <dt>Click <b>Next</b> - leave the <b>Instance Type</b> panel as is.</dt>
+  <dt>Click <b>Next</b> - leave the <b>Instance Details</b> panel as is.</dt>
+  <dt>Click <b>Next</b> - leave the <b>Storage</b> panel as is.</dt>
+  <dt>Click <b>Add Tag</b>. Set key to <b>Name</b> and value to the name you
+    choose to your instance. (Optional step)</dt>
+  <dt>Click <b>Next</b>.</dt>
+  <dt><img src="../img/aws-ec2-create-instance.png" title="Create an EC2 instance"
+    alt="EC2 instance creation" id="sshot"/></dt>
+</dl>
+<dl><big>Create a Security Group</big>
+  <dt>Assign a security group: <b>Create a new security group</b></dt>
+  <dt>Set the security group name and description as you choose.</dt>
+  <dt>Type: <b>RDP</b></dt>
+  <dt>Protocol: <b>TCP</b></dt>
+  <dt>Port Range: <b>3389</b></dt>
+  <dt>Source: <b>My IP</b></dt>
+  <dt>Description: (optional)</dt>
+  <dt>Click <b>Review and Launch</b>.</dt>
+  <dt>Click <b>Launch</b>.</dt>
+  <dt><img src="../img/aws-ec2-sg-rdp.png" title="Create Security Group"
+    alt="security group" id="sshot"/></dt>
+</dl>
+<dl><big>Create a Key Pair</big>
+  <dt>Select: <b>Create a new key pair</b></dt>
+  <dt>Set the key pair name as you choose.</dt>
+  <dt>Click <b>Download Key Pair</b></dt>
+  <dt>Click <b>Launch Instances</b></dt>
+  <dt><img src="../img/aws-ec2-keypair.png" title="Create Key Pair"
+    alt="keypair" id="sshot"/></dt>
+</dl>
+<dl><big>Connect to instance</big>
+  <dt>Back to EC2 Instances panel in the AWS Console.</dt>
+  <dt>Select the instance.</dt>
+  <dt>Click <b>Connect</b>.</dt>
+  <dt>Connection method: <b>A standalone RDP client</b></dt>
+  <dt>At the RDP client of your choice, input the details provided.</dt>
+  <dt>Target: <b>Public DNS</b></dt>
+  <dt>User name <b>Administrator</b></dt>
+  <dt>Password: Click <b>Get Password</b></dt>
+  <dt>Key Pair Path: Click <b>Browse</b> to select the keypair downloaded on the previous step.</dt>
+  <dt>Click <b>Decrypt Password</b></dt>
+  <dt><b>Connect</b>.</dt>
+  <dt><img src="../img/aws-ec2-connect-rdp.png" title="Connect to an EC2 instance"
+    alt="EC2 instance connection" id="sshot"/></dt>
+</dl>
+
+<h2 id="step_two" class="highlight">Step 2 : Install Cisco Packet Tracer on the instance</h2>
+
+<dl><big>Download/Install Cisco Packet Tracer</big>
+  <dt>Inside the server, open a browser and login to: <b>netacad.com</b></dt>
+  <dt>Click <b>Resources</b></dt>
+  <dt>Click <b>Download Packet Tracer</b></dt>
+  <dt>Download the <b>Windows 64 Bit</b> version.</dt>
+  <dt><b>Run</b> the file downloaded.</dt>
+  <dt>Accept the agreement. Click <b>Next</b>; <b>Next</b>; <b>Next</b>;
+    <b>Next</b>; <b>Install</b>; <b>Finish</b></dt>
+</dl>
+
+<h2 id="step_three" class="highlight">Step 3 : Enjoy!</h2>
+
+  <p>Now you have the Cisco Packet Tracer installed and ready to go!</p>
+  <dl>
+    <dt><img src="../img/aws-ec2-windows-pt.png" title="Windows EC2 instance"
+    alt="Windows EC2 instance" id="sshot"/></dt>
+  </dl>
+
+<h2 id="step_four" class="highlight">Step 4 : But before you go... save your work!(and some money)</h2>
+
+  <p>Don't leave your instance running without any purpose. Save your instance
+    (all configured and tweaked) to use it whenever you're up to lab again.</p>
+
+<dl><big>Save your files</big>
+  <dt>Install the AWS CLI as instructed on the
+    <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-windows.html"
+    target="_blank" title="AWS CLI Official Documentation Guide">User Guide</a></b></dt>
+  <dt>Create a S3 bucket:
+    <pre>aws s3 mb s3://mybucket/</pre>
+  </dt>
+  <dt>Upload the files to the bucket:
+    <pre>aws s3 cp local-file s3://mybucket/</pre>
+  </dt>
+  <dt>You can also pull files from the bucket:
+    <pre>aws s3 cp s3://mybucket/remote-file /local-folder/</pre>
+  </dt>
+</dl>
+
+<dl><big>Create an AMI</big>
+  <dt>Back to EC2 Instances panel in the AWS Console.</dt>
+  <dt>Select the instance.</dt>
+  <dt>Click <b>Actions</b>; <b>Image</b>; <b>Create Image</b></dt>
+  <dt>Your AMIs will be available on the EC2 Images panel in the AWS Console.</dt>
+  <dt><img src="../img/aws-ec2-ami.png" title="Connect to an EC2 instance"
+    alt="EC2 instance connection" id="sshot"/></dt>
+</dl>
+<dl><big>Don't forget to terminate your instance!</big>
+  <dt>Back to EC2 Instances panel in the AWS Console.</dt>
+  <dt>Select the instance.</dt>
+  <dt>Click <b>Actions</b>; <b>Instance State</b>; <b>Terminate</b></dt>
+  <dt>Click <b>Yes, Terminate</b></dt>
+</dl>
+
+</div>
+
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tutorials</a>
+</div>
+</body>
+</html>
