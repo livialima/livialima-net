@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="howto, packet tracer, cisco, lab, aws, ec2, remote">
+  <meta name="reading_time" content="00:02:35">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>how to turn an old pc into a nas server</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tutorials</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>Posted on September 18, 2020 - 3 minute read</h6>
+
+<h1>How to turn an old PC into a NAS server</h1>
+
+<div class="videoWrapper">
+  <iframe width="560" height="349"
+  src="https://www.youtube.com/embed/M7JOb0R84EU"
+  frameborder="0" allowfullscreen></iframe>
+</div>
+<br>
+Do you have an old computer laying around your house and want to give it a purpose? Why not use it for storage? This is a tutorial on how to install FreeNAS and share a drive with Windows.
+<ol>
+  <li><a href="#step_one">Check your hardware resources</a></li>
+  <li><a href="#step_two">Find a distro that suits you</a></li>
+  <li><a href="#step_three">Create a bootable flash drive</a></li>
+  <li><a href="#step_four">Installation</a></li>
+  <li><a href="#step_five">Create a shared volume</a></li>
+  <li><a href="#step_six">Access the volume</a></li>
+</ol>
+
+<h2 id="step_one" class="highlight">Step 1 : Check your hardware resources</h2>
+<big>On Windows:</big>
+<ol>
+  <li>Click the Start button and choose Settings (it's the gear-shaped icon above the power icon).</li>
+  <li>Click "System."</li>
+  <li>Click "About."</li>
+</ol>
+<h2 id="step_two" class="highlight">Step 2 : Find a distro that suits you</h2>
+<ol>
+  <li>Go to <a href="https://distrowatch.com" target="_blank">DistroWatch</a></li>
+  <li>Click "Search"</li>
+  <li>On Distribution category, select "NAS"</li>
+  <li>On Status, select "Active"</li>
+  <li>Click "Submit Query"</li>
+</ol>
+You will receive a list with the currently active distributions that are focused on NAS, such as FreeNAS, EasyNAS, OpenMediaVault. Take your time to know the hardware requirements and features for each distro, and compare to your old computer resources. The more you have to use, the easier it is to choose.
+<h2 id="step_three" class="highlight">Step 3 : Create a bootable flash drive</h2>
+<p>Once you have the ISO image downloaded, you need to create a bootable drive to proceed for installation. There are several options in this realm: <a href="" target="_blank">Rufus</a>, <a href="" target="_blank">UNetbootin</a>, <a href="" target="_blank">ImageWriter</a>... the list goes on.</p>
+<p>My personal favorite is a staple in Linux distros everywhere (/dev/sdb being the USB drive):</p>
+<pre>sudo dd if=distro.iso of=/dev/sdb</pre>
+<h2 id="step_four" class="highlight">Step 4 : Installation</h2>
+My pick was <a href="https://www.ixsystems.com/documentation/freenas/11.3-U4/freenas.html" target="_blank">FreeNAS</a> but the installation process is pretty much the same for the other NAS distros.
+<p>
+<big>On installer menu:</big>
+<ol>
+  <li>Press Enter to select the default option, "Install/Upgrade"</li>
+  <li>A minimum of 8 GiB of RAM is required and the installer will present a warning message if less than 8 GiB is detected. <b>However</b>, for domestic sharing with very low volume of requests, or no RAID, 8GiB is good but not necessary.</li>
+  <li>Use the arrow keys to highlight the destination SSD, hard drive, USB stick, or virtual disk. If you only have one hard drive, please get at least an USB stick for the system. Drives selected at this stage <b>cannot be used for data later</b>. Press the spacebar to select and press Enter.</li>
+  <li>Set the root password.</li>
+  <li>Choose UEFI or BIOS booting, depending on how old your computer is. Most UEFI systems can also boot in BIOS mode if CSM (Compatibility Support Module) is enabled in the UEFI setup screens.</li>
+  <li>Installation complete! Press Enter to return to Installer Menu and press Enter on "Reboot System".</li>
+</ol>
+</p>
+<h2 id="step_five" class="highlight">Step 5 : Create a shared volume</h2>
+First access the WebGUI by typing the server IP address (provided at the end of installation) on a browser, and login with root.
+<ol>
+  <li>Go to Storage ➞ Pools and click ADD. Select Create new pool and click CREATE POOL</li>
+  <li>Enter a name for the pool in the Name field</li>
+  <li>From the Available Disks section, select disks to add to the pool.</li>
+  <li>After selecting disks, click the <b>right arrow</b> to add them to the Data VDevs section.</li>
+  <li>Click CREATE. A dialog shows a reminder that all disk contents will be erased. Click Confirm, then CREATE POOL to create the pool.</li>
+  <li>Click Sharing ➞ Windows (SMB Shares), then ADD.</li>
+  <li>Select path of the pool created.</li>
+  <li>Enable Allow Guest Access.</li>
+  <li>Press SAVE.</li>
+  <li>When prompted to enable SMB service, click "Enable SMB"</li>
+</ol>
+Creating a regular user is a good idea to avoid using root to access the volume remotely.
+<h2 id="step_six" class="highlight">Step 6 : Access the volume</h2>
+<big>On Windows:</big>
+<ol>
+  <li>Open File Explorer.</li>
+  <li>Select Map network drive.</li>
+  <li>Select the Drive Letter that you want from the Drive list.</li>
+  <li>Enter the path to the storage in the Folder field.</li>
+    <pre>\\nas-server-ip-address</pre>
+  <li>Select the Connect using different credentials option.</li>
+  <li>You can select the Reconnect at logon check box to automatically reconnect to the storage.</li>
+  <li>Click the Finish to complete the mapping process. When you are prompted for credentials,</li>
+  <ul>
+    <li>Enter the NAS user name in the user name field.</li>
+    <li>Enter the NAS password in the password field.</li>
+    <li>Click OK</li>
+  </ul>
+</ol>
+
+</div>
+
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tutorials</a>
+</div>
+</body>
+</html>
