@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="howto,network,cable,rj45,cat5,cat6,crossover">
+  <meta name="reading_time" content="00:03:07">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>how to make a network cable</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>Posted on October 9, 2020 - 3 minute read</h6>
+
+<h1>How to make a network cable</h1>
+<p>The aim of this tutorial is to give an overview of cable networking theory and to show how to crimp a connector onto the end of a network cable.</p>
+<div id="disclaimer">DISCLAIMER: This tutorial focus only on copper-wired, twisted pair cables.</div>
+
+<h2>Requirements</h2>
+<p>The tools needed to make a network cable are:</p>
+<ul>
+<li>An <a href="https://www.amazon.com/Mediabridge-Ethernet-Cable-Feet-31-399-25X/dp/B001W28L2Y/ref=sr_1_3?dchild=1&amp;keywords=ethernet+cable+cat5&amp;qid=1602205353&amp;sr=8-3" target="_blank">ethernet cable</a> (Cat5/Cat6).</li>
+<li>A few <a href="https://www.amazon.com/CableCreation-100-PACK-Connector-Connectors-Transparent/dp/B01K9Z4FT2/ref=sr_1_3?dchild=1&amp;keywords=RJ45+connectors&amp;qid=1602205406&amp;sr=8-3" target="_blank">RJ45 connectors</a>. Please buy more than 2 units. These things are cheap and it is easy for a newbie to break them.</li>
+<li>A <a href="https://www.amazon.com/Stripper-Crimping-Stripping-Telephone-BUSHIBU/dp/B0768QBNWQ/ref=sr_1_2?dchild=1&amp;keywords=mini+wire+stripper&amp;qid=1602205429&amp;sr=8-2" target="_blank">mini wire stripper</a> or a knife (but be careful). You can also use a pair of scissors.</li>
+<li>A <a href="https://www.amazon.com/dp/B087YSF629?pd_rd_i=B087YSF629&amp;pd_rd_w=NsJnk&amp;pf_rd_p=4f746af9-b6d9-45af-93e9-2f6052926c10&amp;pd_rd_wg=Onefk&amp;pf_rd_r=7A7EKZ0D06JP9GVTPW3R&amp;pd_rd_r=f84f5db8-6543-4bfc-8b3b-6e2a436152e4" target="_blank">crimper</a>. Make sure it does crimp RJ45 connectors (has the capacity for eight wires).</li>
+<li>A <a href="https://www.amazon.com/iMBAPrice-Network-Cable-Tester-Phone/dp/B01M63EMBQ/ref=sr_1_3?dchild=1&amp;keywords=network+cable+tester&amp;qid=1602205519&amp;sr=8-3" target="_blank">cable tester</a>. Optional but very useful during troubleshooting.</li>
+</ul>
+
+<h2>Cables</h2>
+<p><img alt="Cat5 Cat6 cables" src="/home/livia/Documents/livialima-net/img/cables-cat5-cat6.jpg"></p>
+<p>Ethernet cables consist of 8 copper wires, twisted in 4 pairs. The purpose of the twisting is to reduce electromagnetic radiation from the pair and crosstalk between neighboring pairs. This also improves rejection of external electromagnetic interference.</p>
+<p>Twisted pair cables can be <strong>unshielded</strong> (UTP) or <strong>shielded</strong> (STP) with an additional layer of conductive material to attenuate electromagnetic waves external to the shield.</p>
+<p>Some examples:</p>
+<ul>
+<li><strong>Cat5</strong>: Unshielded. 100BASE-TX / 1000BASE-T. Limited to 100m between equipment. Common for current LANs.</li>
+<li><strong>Cat5e</strong>: Shielded. 1000BASE-T / 2.5GBASE-T. Limited to 100m between equipment. Enhanced Cat5. Common for current LANs. Same construction as Cat5, but with better testing standards.</li>
+<li><strong>Cat6</strong>: Shielded. 5GBASE-T / 10GBASE-T. Limited to 55M distance at 10GBASE-T</li>
+</ul>
+<p>The contents of the cable are exactly the same no matter what the plastic jacket color is.</p>
+<h2 id="connectors">Connectors</h2>
+<p>The conventional name for the connectors on the ends of Ethernet cables is <strong>RJ-45</strong>. They consist of 8 pins, one for each wire inside an Ethernet cable.</p>
+<p><img alt="RJ45 connectors" src="/home/livia/Documents/livialima-net/img/rj45-overview.jpg"></p>
+
+<h2>Colors and Pins</h2>
+<p>There is a sequence for the pins in an RJ-45 connector:</p>
+<p><img alt="RJ45 pins" src="/home/livia/Documents/livialima-net/img/rj45-pins.png"></p>
+<p>The important factor to remember when wiring RJ-45 plugs is the function of each pin.:</p>
+<ol>
+<li>Transmit positive signal (Tx+)</li>
+<li>Transmit negative signal (Tx-)</li>
+<li>Receive positive signal (Rx+)</li>
+<li>Nothing</li>
+<li>Nothing</li>
+<li>Receive negative signal (Rx-)</li>
+<li>Nothing</li>
+<li>Nothing</li>
+</ol>
+<p>Following that sequence, there are two main standard pinouts (or orders) for the colored wires of the cable.</p>
+<p><img alt="568A" src="/home/livia/Documents/livialima-net/img/568A.png">
+RJ-45 TIA-568A pinout:</p>
+<ol>
+<li>Green stripe</li>
+<li>Green solid</li>
+<li>Orange stripe</li>
+<li>Blue solid</li>
+<li>Blue stripe</li>
+<li>Orange solid</li>
+<li>Brown stripe</li>
+<li>Brown solid</li>
+</ol>
+<p><img alt="568B" src="/home/livia/Documents/livialima-net/img/568B.png">
+RJ-45 TIA-568B pinout:</p>
+<ol>
+<li>Orange stripe</li>
+<li>Orange solid</li>
+<li>Green stripe</li>
+<li>Blue solid</li>
+<li>Blue stripe</li>
+<li>Green solid</li>
+<li>Brown stripe</li>
+<li>Brown solid</li>
+</ol>
+<p><img alt="pin standards" src="/home/livia/Documents/livialima-net/img/568_A_and_568_B.svg"></p>
+<p>It doesn’t matter which of these standards you use just as long as you are consistent when crimping connectors onto both ends of a cable.</p>
+
+<h2>Straight, crossover or rollover?</h2>
+<p>The distinction between a straight through, crossover, and rollover cable comes down to the way that the connectors on each end are wired.</p>
+<ul>
+<li><strong>Straight through</strong>: both sides follow the same wire positions. Straight-Through wired cables are most commonly used to connect a host to a client.<br>
+<img alt="Straight" src="/home/livia/Documents/livialima-net/img/straight.png"></li>
+<li><strong>Crossover</strong>: Tx and Rx pairs switch positions (pins 1 &amp; 2 switch to pins 3 &amp; 6). Crossover cables are most commonly used to connect two hosts directly. Examples would be connecting a computer directly to another computer, connecting a switch directly to another switch, or connecting a router to a router.<br>
+<img alt="Crossover" src="/home/livia/Documents/livialima-net/img/crossover.png"></li>
+<li><strong>Rollover</strong>: all pin positions are reversed (pin 1 goes to pin 8, pin 2 to pin 7, etc). Rollover cables are most commonly used to connect to a device's console port to make programming changes to the device. Unlike crossover and straight-wired cables, rollover cables are not intended to carry data but instead create an interface with the device.<br>
+<img alt="Rollover" src="/home/livia/Documents/livialima-net/img/rollover.png"></li>
+</ul>
+
+<h2>Making your cable</h2>
+<p>Check out my <a href="howto-connect-2pcs-crossover-cable.html">video about crossover cables</a> for some visuals.</p>
+<ol>
+<li>Using a cable stripper, a knife or a pair of scissors, cut the outter plastic jacket of the Ethernet cable. <strong id="disclaimer">CAUTION: be gentle! If you go too deep you will cut through the inner wires, exposing the copper.</strong></li>
+<li>Untwist the pairs and straight them to make them easier to manipulate.</li>
+<li>Arrange them in the desired standard.</li>
+<li>Measure the wires to the be enough to fit into the RJ-45 connector.</li>
+<li>Cut off the excess wire. Ensure to level the wires, they should align to the flat edge of the connector.</li>
+<li>Carefully, slide the wires inside the connector. Push them enough to see the copper at the edge of the connector.</li>
+<li>Crimp it. The pins should pierce throught the wires.</li>
+<li>Repeat the process on the other end of the cable.</li>
+<li>Test the cable using a cable tester. Plug each connector into the tester and turn it on. All pins should send and receive signal. If any pins do not light up on the tester, the connector was badly crimped. Cut the damaged connector and start over.</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this tutorial, you learned the basics of cable networking theory and how to crimp your own network cable.</p>
+
+</div>
+
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+</body>
+</html>

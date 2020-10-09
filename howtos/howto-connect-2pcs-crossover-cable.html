@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="howto, lab, crossover, cable, ssh, sftp, ufw, rj45, ethernet, ftp, linux">
+  <meta name="reading_time" content="00:02:52">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>how to connect two computers using a crossover cable</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>Posted on October 9, 2020 - 3 minute read</h6>
+
+<h1>How to Connect Two Computers using a Crossover Cable</h1>
+
+<div class="videoWrapper">
+  <iframe width="560" height="349"
+  src="https://www.youtube.com/embed/hhELDJHRz_0"
+  frameborder="0" allowfullscreen></iframe>
+</div>
+<!--Download: <a href="../vid/study-session-003.mp4">video(.mp4)</a> |
+<a href="study-session-003-captions.srt">subtitles(.srt)</a>-->
+
+<p>Ever wondered how to connect two computers together without going through a local network (LAN)?</p>
+<p>If your computers are on a network, you can share files and folders, but what happens if you don't have a router/switch/hub to make that LAN happen?</p>
+<p>In this tutorial I will show you how to use a crossover cable to connect two computers and transfer data.</p>
+<ol>
+<li><a href="#step_one">Make and plug a crossover cable</a></li>
+<li><a href="#step_two">Set a static IP address on both computers</a></li>
+<li><a href="#step_three">User accounts and firewalls</a></li>
+<li><a href="#step_four">Enable SSH</a></li>
+<li><a href="#step_five">Use SFTP</a></li>
+</ol>
+<div id="disclaimer">DISCLAIMER: I've made this tutorial using linux.</div>
+
+<h2>Step Zero : Requirements</h2>
+<ul>
+<li>Administrator access to both computers.</li>
+<li>A crossover ethernet cable.</li>
+</ul>
+<h2 id="step_one">Step 1 : Make (and plug) a crossover cable</h2>
+<p>If you want to hone your cabling skills, you can <a href="howto-make-network-cable.html">make your own crossover cable</a> for this tutorial. But if you don't want the trouble of making a cable, just buy a pre-made <a href="https://www.amazon.com/Tripp-Lite-350MHz-Molded-Cross-over/dp/B0056YN7QE/ref=sr_1_3?dchild=1&keywords=crossover+ethernet+cable+cat5&qid=1602262952&sr=8-3" target="_blank">crossover ethernet cable</a>.</p>
+<p>Once you have your cable settled, connect it to the computers.</p>
+
+<div><img alt="connected cables" src="/home/livia/Documents/livialima-net/img/cables-connected-p2p.jpg"  ><br></div>
+
+
+<h2 id="step_two">Step 2 : Set a static IP address on both computers</h2>
+<p>Even if we had both computers connected to a LAN, we are not using the same network addresses. With the crossover cable we are creating a little peer-to-peer connection, and that is a completely different network. For this case, the best solution is to configure a static IP address for each computer (within that new network we're creating).</p>
+<p>Check out the tutorial <a href="howto-setup-static-ip-address-linux.html">How to Set Static IP Address in Linux</a> to see it in detail.</p>
+<p>Make sure that both computers are on the same subnet (like 192.168.1.1 and 192.168.1.2) and use the same mask (like 255.255.255.248).</p>
+<p>There are two possible configuration files in Linux systems (consider <code>enp1s0</code> and <code>eth0</code> as Ethernet interfaces):</p>
+<p><strong>/etc/sysconfig/network-scripts/ifccfg-enp1s0</strong><br>
+<img alt="config file /etc/sysconfig/network-scripts/ifccfg-enp1s0" src="/home/livia/Documents/livialima-net/img/static_ip-pc1.png"  ></p>
+<p><strong>/etc/network/interfaces</strong><br>
+<img alt="static ip pc2" src="/home/livia/Documents/livialima-net/img/static_ip-pc2.png"  ></p>
+<p>With that ready you can do the first test: <code>ping ip_address</code></p>
+<p>Example:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>ping&nbsp;192.168.1.1</span></span></div></pre><p><img alt="ping pc1 pc2" src="/home/livia/Documents/livialima-net/img/ping-pc1-pc2.png"  >
+<img alt="ping pc2 pc1" src="/home/livia/Documents/livialima-net/img/ping-pc2-pc1.png"  ></p>
+<p>That confirms both sides are connected and seeing each other.</p>
+
+
+<h2 id="step_three">Step 3 : Security measures (firewalls and user accounts)</h2>
+<p>The computers see each other but they can't do anything yet. For that you have to open their conversation by allowing incoming SSH connections from one another.</p>
+<p>UFW (Uncomplicated Firewall) is used for managing a Linux firewall.</p>
+<p><strong>Open ports on the firewall</strong>: using <code>ufw</code> we will open port TCP/22 for the other computer (PC1 to PC2, PC2 to PC1 or both).</p>
+<p>To allow incoming SSH connections from a specific IP address named 192.168.1.2, enter:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sudo&nbsp;ufw&nbsp;allow&nbsp;from&nbsp;192.168.1.2&nbsp;to&nbsp;any&nbsp;port&nbsp;22</span></span></div></pre><p>To enable ufw:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sudo&nbsp;ufw&nbsp;enable</span></span></div></pre><p>To check the status:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sudo&nbsp;ufw&nbsp;status</span></span></div></pre><p><img alt="ufw status" src="/home/livia/Documents/livialima-net/img/ufw-status-pc2.png"  ></p>
+<p>If <code>ufw</code> was not enabled the output would be:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sudo&nbsp;ufw&nbsp;status</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>Status:&nbsp;inactive</span></span></div></pre>
+
+
+<h2 id="step_four">Step 4 : Enable SSH</h2>
+<p><strong>Secure Shell (SSH)</strong> is a cryptographic network protocol used for an encrypted connection between a client and a server.</p>
+<p>You can enable the SSH server for one or both computers, but the SSH client creates a secure connection only to the machine that have the SSH server daemon (sshd) running.</p>
+<p>Check out the tutorial <a href="howto-setup-ssh-server-linux.html">How to setup and use SSH Server on Linux</a> to see it in detail.</p>
+
+
+<h2 id="step_five">Step 5 : Use SFTP</h2>
+<p><strong>For file transfer</strong> you can use <a href="https://filezilla-project.org/" target="_blank">FileZilla</a>, that runs in server and client versions in different platforms (including Windows, Mac and Linux). Or, if you are using Linux or Mac, SFTP is a good choice.</p>
+<p><strong>SFTP (SSH File Transfer Protocol)</strong> is a secure file protocol that is used to access, manage, and transfer files over an encrypted SSH connection. SFTP works on a client-server model.</p>
+<p>Check out the tutorial <a href="basic-commands-sftp.html">SFTP Basic Commands</a> to see it in detail.</p>
+<p>In this tutorial scenario, open a SFTP connection to the other computer: use the <code>sftp</code> command followed by the username and the IP address:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sftp&nbsp;demo@192.168.1.2</span></span></div></pre><p>You will be prompted to enter the user password. Once connected, you will be presented with the <code>sftp</code> prompt, and you can start interacting with the remote server:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>Connected&nbsp;to&nbsp;demo@192.168.1.2</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sftp&gt;</span></span></div></pre><p>Use <code>get</code> to download files and <code>put</code> to upload.</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sftp&gt;&nbsp;get&nbsp;remote_file.txt</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>Fetching&nbsp;/home/demo/remote_file.txt&nbsp;to&nbsp;remote_file.txt</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sftp&gt;&nbsp;put&nbsp;local_file.txt</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>Uploading&nbsp;local_file.txt&nbsp;to&nbsp;/home/demo/local_file.txt</span></span></div></pre><h2 id="conclusion">Conclusion</h2>
+<p>In this tutorial you learned how to use a crossover cable to connect two computers running Linux and transfer data using SFTP.</p>
+
+</div>
+
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+</body>
+</html>

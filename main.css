@@ -6,6 +6,10 @@ body {
   font-size: 1em;
   font-family: sans-serif;
 }
+h2 {
+  background: #ccf;
+  border-bottom: 0.1em solid #999;
+}
 .highlight {
   background: #ccf;
   border-bottom: 0.1em solid #999;

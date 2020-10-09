@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="tool, sftp">
+  <meta name="reading_time" content="00:01:37">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>basic sftp commands</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>Posted on October 9, 2020 - 2 minute read</h6>
+
+<h1>SFTP Basic Commands</h1>
+
+<p><strong>SSH File Transfer Protocol</strong> (also Secure File Transfer Protocol, or SFTP) is a network protocol that provides file access, file transfer, and file management over a secure channel, such as SSH.</p>
+
+<h2 class="highlight">Connect</h2>
+
+<p>Enter the <strong>username</strong> and remote <strong>hostname</strong> or IP address at the command prompt. Once authentication successful, you will see a shell with an <code>sftp&gt;</code> prompt.</p>
+
+<pre>
+[user@computer1 ~]$ sftp demo@192.168.1.2
+demo@192.168.1.2's password:
+Connected to demo@192.168.1.2.
+sftp>
+</pre>
+
+<h2  class="highlight">Check current directory</h2>
+
+<p><strong>lpwd</strong> – print the current directory on your <em>local</em> system</p>
+<pre>
+sftp> lpwd
+Local working directory: /home/livia
+sftp>
+</pre>
+
+<p><strong>pwd</strong> – print the current directory on the remote server</p>
+<pre>
+sftp> pwd
+Remote working directory: /home/demo
+sftp>
+</pre>
+
+<h2  class="highlight">List files</h2>
+
+<p><strong>lpwd</strong> – list the files in the current directory on your <em>local</em> system</p>
+<pre>
+sftp> lls
+ Desktop      lab           py3-venv
+ Documents    mail           R
+ dotfiles     myserverfile       snap
+ Downloads    node_modules       Videos
+sftp>
+</pre>
+
+<p><strong>ls</strong> – list the files in the current directory on the remote server</p>
+<pre>
+sftp> ls
+Desktop    Documents  Downloads  Music
+Pictures   Videos
+sftp>
+</pre>
+
+<h2 class="highlight">Download files</h2>
+
+<p><strong>get</strong> – download one file from remote server</p>
+<pre>
+sftp> get remote_file.pem
+Fetching /home/demo/remote_file.pem to remote_file.pem
+/home/demo 100% 1696   906.8KB/s   00:00
+sftp>
+</pre>
+
+<p><strong>mget</strong> – download multiple files from remote server</p>
+<pre>
+sftp> mget *.csv
+Fetching /home/demo/user1_accessKeys.csv to user1_accessKeys.csv
+/home/demo 100%   96    73.1KB/s   00:00
+Fetching /home/demo/user2_accessKeys.csv to user2_accessKeys.csv
+/home/demo 100%   96    67.0KB/s   00:00
+sftp>
+</pre>
+
+<h2 class="highlight">Upload files</h2>
+
+<p><strong>put</strong> – upload one file from local computer to the remote server</p>
+<pre>
+sftp> put local_file.pem
+Uploading local_file.pem to /home/demo/local_file.pem
+local_fil 100% 1696    75.2KB/s   00:00
+sftp>
+</pre>
+
+<p><strong>mput</strong> – upload multiple files from local computer to the remote server</p>
+<pre>
+sftp> mput *.csv
+Uploading user1_accessKeys.csv to /home/demo/user1_accessKeys.csv
+user1_acce 100%   96   129.7KB/s   00:00
+Uploading user2_accessKeys.csv to /home/demo/user2_accessKeys.csv
+user2_acce 100%   96   132.1KB/s   00:00
+sftp>
+</pre>
+
+<h2 class="highlight">Change directory</h2>
+
+<p><strong>lcd</strong> – change the current directory on your <em>local</em> system</p>
+<pre>
+sftp> lpwd
+Local working directory: /home/livia
+sftp> lcd lab/
+sftp> lpwd
+Local working directory: /home/livia/lab
+sftp>
+</pre>
+
+<p><strong>cd</strong> – change the current directory on the remote server</p>
+<pre>
+sftp> pwd
+Remote working directory: /home/demo
+sftp> cd Documents/
+sftp> pwd
+Remote working directory: /home/demo/Documents
+sftp>
+</pre>
+
+<h2  class="highlight">Exit</h2>
+
+<p><strong>exit</strong> – exit the remote server sftp session</p>
+<pre>
+sftp>
+sftp> exit
+[user@computer1 ~]$
+</pre>
+
+<p>More about SFTP can be found at the <a href="https://man.openbsd.org/sftp" target="_blank">manual page</a>.</p>
+
+</div>
+
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+</body>
+</html>

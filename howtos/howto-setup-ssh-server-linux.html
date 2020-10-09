@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="howto,ssh,openssh,server">
+  <meta name="reading_time" content="00:00:36">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>how to setup and use ssh server on linux</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>Posted on October 9, 2020 - 1 minute read</h6>
+
+<h1 id="how-to-setup-and-use-ssh-server-on-linux">How to setup and use SSH Server on Linux</h1>
+<h2 id="server-side-install-openssh">Server side : Install OpenSSH</h2>
+<p><strong>Debian / Ubuntu</strong>: <code>sudo apt-get install openssh-server</code></p>
+<p><strong>RHEL / CentOS / Fedora</strong>: <code>sudo dnf install openssh-server</code></p>
+<h2 id="server-side-enable-start-the-ssh-service">Server side : Enable/Start the SSH service</h2>
+<p><strong>SysVinit</strong>:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sudo&nbsp;/etc/init.d/sshd&nbsp;start</span></span></div></pre><p><strong>SystemD</strong>:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sudo&nbsp;systemctl&nbsp;enable&nbsp;sshd</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sudo&nbsp;systemctl&nbsp;start&nbsp;sshd</span></span></div></pre><p>If unsure of what which system manager your distro uses, try this:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>pidof&nbsp;systemd&nbsp;&amp;&amp;&nbsp;echo&nbsp;"systemd"&nbsp;||&nbsp;echo&nbsp;"sysvinit"</span></span></div></pre><h2 id="client-side-install-openssh-or-other-ssh-client">Client side : Install OpenSSH or other SSH client</h2>
+<p>OpenSSH client is commonly found already installed in most distros, but here are the steps in case it isn't. You can also use <a href="https://www.putty.org/" target="_blank">Putty</a> as it is very popular and user-friendly.</p>
+<p><strong>Debian / Ubuntu</strong>: <code>sudo apt-get install openssh-server</code></p>
+<p><strong>RHEL / CentOS / Fedora</strong>: <code>sudo dnf install openssh-server</code></p>
+<h2 id="test-it">Test it</h2>
+<p>Try to login into the server using <code>ssh user@server-name</code></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this tutorial, you learned how to install the OpenSSH server application and how to connect to that using a SSH client.</p>
+
+</div>
+
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+</body>
+</html>

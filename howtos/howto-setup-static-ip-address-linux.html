@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="howto,static,ip">
+  <meta name="reading_time" content="00:00:44">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>how to set static ip address on linux</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>Posted on October 9, 2020 - 1 minute read</h6>
+
+<h1 id="how-to-set-static-ip-address-on-linux">How to Set Static IP Address on Linux</h1>
+<p>Different from desktop machines where you can use dynamic IP addresses, static IP address are often required on a server infrastructure.</p>
+<h2 id="rhel-centos-fedora-">RHEL / CentOS / Fedora:</h2>
+<p>You will need to edit:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>/etc/sysconfig/network-scripts/ifcfg-eth0</span></span></div></pre><p>Where <code>ifcfg-eth0</code> relates to your network interface <code>eth0</code>. If your interface name is <code>enp1s0</code> then the file that you will need to edit is <code>ifcfg-enp1s0</code>.</p>
+<p>Add the following fields:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>DEVICE="eth0"</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>BOOTPROTO="static"</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>IPADDR="192.168.1.1"</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>NETMASK="255.255.255.0"</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>TYPE="Ethernet"</span></span></div></pre><h2 id="debian-ubuntu-">Debian / Ubuntu:</h2>
+<p>To setup static IP address in Debian/ Ubuntu, edit the following file:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>/etc/network/interfaces</span></span></div></pre><p>You may see a line looking like this:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>auto&nbsp;eth0</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>iface&nbsp;eth0&nbsp;inet&nbsp;dhcp</span></span></div></pre><p>Change it so it looks like this:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>auto&nbsp;eth0</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>iface&nbsp;eth0&nbsp;inet&nbsp;static</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>&nbsp;&nbsp;address&nbsp;192.168.1.1</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>&nbsp;&nbsp;netmask&nbsp;255.255.255.0</span></span></div></pre><h2 id="restart-the-networking-on-your-system-">Restart the networking on your system:</h2>
+<p><strong>SysVinit</strong>: <code>/etc/init.d/network restart</code></p>
+<p><strong>SystemD</strong>: <code>systemctl restart network</code></p>
+<p>If unsure of what which system manager your distro uses, try this:</p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>pidof&nbsp;systemd&nbsp;&amp;&amp;&nbsp;echo&nbsp;"systemd"&nbsp;||&nbsp;echo&nbsp;"sysvinit"</span></span></div></pre><h2 id="conclusion">Conclusion</h2>
+<p>You now know how to configure a static IP address on a Linux distro.</p>
+
+</div>
+
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+</body>
+</html>
