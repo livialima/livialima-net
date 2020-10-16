@@ -8,4 +8,4 @@ You can fork its repository on [GitHub](https://github.com/kallaway/100-days-of-
 
 **My Background**: I'm not completely new to programming, but I am not a programmer by any means. I've been entertaining the idea of getting back on the trenches and adding programmability to my skillset. Advancing on my career as Network Engineer with DevNet is the goal.
 
-**My Progress**: I'm recording my struggles and victories on my [GitHub repo](https://github.com/livialima/100-days-of-code) and [Twitter @livialimatweets](https://twitter.com/search?q=%23100DaysOfCode%20%40livialimatweets&src=typed_query).
+**My Progress**: I'm recording my struggles and victories on my [GitHub repo](https://github.com/livialima/100-days-of-code) and [Twitter @livialimatweets](https://twitter.com/search?q=%23100DaysOfCode%20%40livialimatweets&src=typed_query&f=live).
