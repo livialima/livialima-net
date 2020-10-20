@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>cloud resume challenge</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="challenges-index.html">All Challenges</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+  <h1 id="the-cloud-resume-challenge">The Cloud Resume Challenge</h1>
+  <p>The <a href="https://cloudresumechallenge.dev/">cloud resume challenge</a> is a hands-on challenge created by <a href="https://forrestbrazeal.com/">Forrest Brazeal</a>. The idea is to <strong>create your own resume using essential cloud skills</strong>.</p>
+  <p><strong>My Background</strong>: I found this challenge when I was preparing to publish my website and the simplicity was what hooked me. I already have IT experience, which disqualifies me for a referral from Forrest. But since my initial goal was to simply put my website out there, there's no harm in trying.</p>
+  <p><strong>My Progress</strong>: The challenge consists of <a href="https://cloudresumechallenge.dev/instructions/">16 proposed steps</a>. I did the first 6 steps to start blogging and, for that, it's good enough. But I wanted to finish the thing, so here we are.</p>
+  <h2 id="13-16-completed">13/16 Completed</h2>
+  <ul>
+  <li><label>
+    <input checked="" class="task-list-item-checkbox" type="checkbox">
+     <strong>Certification</strong> Your resume needs to have the <a href="https://aws.amazon.com/certification/certified-cloud-practitioner/">AWS Cloud Practitioner</a> certification on it.
+  </label></li>
+  <li><label>
+    <input checked="" class="task-list-item-checkbox" type="checkbox">
+     <strong>HTML</strong> Your resume needs to be written in HTML.
+  </label></li>
+  <li><label>
+    <input checked="" class="task-list-item-checkbox" type="checkbox">
+     <strong>CSS</strong> Your resume needs to be styled with CSS.
+  </label></li>
+  <li><label>
+    <input checked="" class="task-list-item-checkbox" type="checkbox">
+     <strong>Static S3 Website</strong> Your HTML resume should be deployed online as an Amazon S3 static website.
+  </label></li>
+  <li><label>
+    <input checked="" class="task-list-item-checkbox" type="checkbox">
+     <strong>HTTPS</strong> The S3 website URL should use HTTPS for security.
+  </label></li>
+  <li><label>
+    <input checked="" class="task-list-item-checkbox" type="checkbox">
+     <strong>DNS</strong> Point a custom DNS domain name to the CloudFront distribution, so your resume can be accessed at something like <code>my-c00l-resume-website.com</code>.
+  </label></li>
+  <li><label>
+    <input checked="" class="task-list-item-checkbox" type="checkbox">
+     <strong>Javascript</strong> Your resume webpage should include a visitor counter that displays how many people have accessed the site. You will need to write a bit of Javascript to make this happen.
+  </label></li>
+  <li><label>
+    <input checked="" class="task-list-item-checkbox" type="checkbox">
+     <strong>Database</strong> The visitor counter will need to retrieve and update its count in a database somewhere. Use DynamoDB.
+  </label></li>
+  <li><label>
+    <input checked="" class="task-list-item-checkbox" type="checkbox">
+     <strong>API</strong> Do not communicate directly with DynamoDB from your Javascript code. Instead, you will need to create an API that accepts requests from your web app and communicates with the database. Use API Gateway and Lambda.
+  </label></li>
+  <li><label>
+    <input checked="" class="task-list-item-checkbox" type="checkbox">
+     <strong>Python</strong> You will need to write a bit of code in the Lambda function; use Python – a common language used in back-end programs and scripts – and its boto3 library for AWS.
+  </label></li>
+  <li><label>
+    <input class="task-list-item-checkbox" type="checkbox">
+     <strong>Tests</strong> You should also include some tests for your Python code.
+  </label></li>
+  <li><label>
+    <input class="task-list-item-checkbox" type="checkbox">
+     <strong>Infrastructure as Code</strong> You should not be configuring your API resources; the DynamoDB table, the API Gateway, the Lambda function; manually, by clicking around in the AWS console. Instead, define them in an AWS Serverless Application Model (SAM) template and deploy them using the AWS SAM CLI. This is called “infrastructure as code” or IaC.
+  </label></li>
+  <li><label>
+    <input checked="" class="task-list-item-checkbox" type="checkbox">
+     <strong>Source Control</strong> You do not want to be updating either your back-end API or your front-end website by making calls from your laptop, though. You want them to update automatically whenever you make a change to the code. (This is called continuous integration and deployment, or CI/CD.) Create a private GitHub repository for your backend code.
+  </label></li>
+  <li><label>
+    <input class="task-list-item-checkbox" type="checkbox">
+     <strong>CI/CD (Back end)</strong> Set up GitHub Actions such that when you push an update to your Serverless Application Model template or Python code, your Python tests get run. If the tests pass, the SAM application should get packaged and deployed to AWS.
+  </label></li>
+  <li><label>
+    <input checked="" class="task-list-item-checkbox" type="checkbox">
+     <strong>CI/CD (Front end)</strong> Create a GitHub repository for your website code. Create GitHub Actions such that when you push new website code, the S3 bucket automatically gets updated.
+  </label></li>
+  <li><label>
+    <input checked="" class="task-list-item-checkbox" type="checkbox">
+     <strong><a href="../howtos/howto-static-site-aws-cicd.html">Blog post</a></strong> Finally, in the text of your resume, you should link a short blog post describing some things you learned while working on this project.
+  </label></li>
+  </ul>
+
+</div>
+
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="challenges-index.html">All Challenges</a>
+</div>
+</body>
+</html>
