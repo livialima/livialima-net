@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="howto, aws, ec2">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>how to launch an ec2 instance</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>Posted on November 1, 2020 - 2 minute read</h6>
+
+<h1>How to launch an EC2 instance</h1>
+
+<p>The intent is to show how to quickly launch your first EC2 instance.</p>
+
+<h2>Step 1 : Choose the type of instance</h2>
+<ul>
+<li>Navigate to EC2 in the AWS Console.</li>
+<li>Click <strong>Launch Instance</strong>.</li>
+<li>Select a free-tier elegible Linux image, in doubt select <strong>Amazon Linux 2</strong>.</li>
+<li>Click <strong>Next</strong> - leave the <strong>Instance Type</strong> panel as is.</li>
+<li>Click <strong>Next</strong> - leave the <strong>Instance Details</strong> panel as is.</li>
+<li>Click <strong>Next</strong> - leave the <strong>Storage</strong> panel as is.</li>
+<li>Click <strong>Add Tag</strong>. Set key to <strong>Name</strong> and value to the name you choose to your instance. (Optional step)</li>
+<li>Click <strong>Next</strong>.<br>
+<img src="../img/aws-ec2-create-instance.png" alt="EC2 instance creation" title="Create an EC2 instance"></li>
+</ul>
+
+<h2>Step 2 : Create a Security Group</h2>
+<ul>
+  <li>Assign a security group: Create a new security group</li>
+  <li>Set the security group name and description as you choose.</li>
+  <ul>
+    <li>SSH connection for Linux instances</li>
+    <ul>
+      <li>Type: <strong>SSH</strong></li>
+      <li>Protocol: <strong>TCP</strong></li>
+      <li>Port Range: <strong>22</strong></li>
+      <li>Source: <strong>My IP</strong></li>
+      <li>Description: (optional)</li>
+    </ul>
+  </ul>
+  <ul>
+    <li>RDP connection for Windows instances</li>
+    <ul>
+      <li>Type: <strong>RDP</strong></li>
+      <li>Protocol: <strong>TCP</strong></li>
+      <li>Port Range: <strong>8003</strong></li>
+      <li>Source: <strong>My IP</strong></li>
+      <li>Description: (optional)</li>
+    </ul>
+  </ul>
+  <li>You can add as much rules as needed.</li>
+  <li>Click Review and Launch.</li>
+  <li>Click Launch.<br>
+    <img src="../img/aws-ec2-sg-gns3.png" alt="security group" title="Create Security Group"></li>
+</ul>
+
+<h2>Step 3 : Create a Key Pair</h2>
+<ul>
+<li>Select: <strong>Create a new key pair</strong></li>
+<li>Set the key pair name as you choose.</li>
+<li>Click <strong>Download Key Pair</strong></li>
+<li>Click <strong>Launch Instances</strong><br>
+<img src="../img/aws-ec2-keypair.png" alt="keypair" title="Create Key Pair"></li>
+</ul>
+<h2>Step 4 (for Linux instances) : Connect to instance using SSH</h2>
+<ul>
+<li>Back to EC2 Instances panel in the AWS Console.</li>
+<li>Select the instance.</li>
+<li>Click <strong>Connect</strong>.</li>
+<li>Connection method: <strong>A standalone SSH client</strong></li>
+</ul>
+<p>For Linux users:</p>
+<ul>
+<li>Change the keypair file permissions to Only Owner Read/Write as follows:</li>
+</ul>
+<pre><code>chmod 400 my-key-pair.pem
+</code></pre>
+<p>Or, if you are using Windows:</p>
+<ul>
+<li>File - Properties - Security - Advanced</li>
+<li>Set Owner to the key’s user</li>
+<li>Remove all users, groups, and services, except for the key’s user, under Permission Entries</li>
+<li>Set key’s user to Full Control</li>
+</ul>
+<p>At the SSH client of your choice, input the details provided.</p>
+<ul>
+<li>User name</li>
+<li>Target</li>
+</ul>
+<pre><code>ssh -i my-key-pair.pem user@server-public-dns
+</code></pre>
+<p>Example:</p>
+<pre><code>ssh -i &quot;linux-lab.pem&quot; ubuntu@ec2-52-90-153-75.compute-1.amazonaws.com
+</code></pre>
+<p><img src="../img/aws-ec2-connect-ssh.png" alt="SSH connection" title="Connect to an EC2 instance"></p>
+
+<h2>Step 4 (for Windows instances) : Connect to instance using RDP</h2>
+<ul>
+<li>Back to EC2 Instances panel in the AWS Console.</li>
+<li>Select the instance.</li>
+<li>Click <strong>Connect</strong>.</li>
+<li7>Connection method: <strong>A standalone RDP client</strong></li>
+<li>At the RDP client of your choice, input the details provided.</li>
+<li>Target: <strong>Public DNS</strong></li>
+<li>User name <strong>Administrator</strong></li>
+<li>Password:
+<ul>
+<li>Click <strong>Get Password</strong></li>
+<li>Key Pair Path: Click <strong>Browse</strong> to select the keypair downloaded on the previous step.</li>
+<li>Click <strong>Decrypt Password</strong></li>
+</ul>
+</li>
+<li><strong>Connect</strong>.<br>
+<img src="../img/aws-ec2-connect-rdp.png" alt="EC2 instance connection" title="Connect to an EC2 instance"></li>
+</ul>
+
+</div>
+
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+</body>
+</html>

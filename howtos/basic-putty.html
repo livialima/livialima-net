@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="tool, putty">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>basic sftp commands</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>Posted on November 1, 2020 - 1 minute read</h6>
+
+<h1>PuTTY Basics</h1>
+
+<p><strong><a href="https://www.putty.org/" target="_blank">PuTTY</a></strong> is a free and open-source terminal emulator, very popular as a SSH client; used primarily by Windows users.</p>
+
+<h2>SSH Connection</h2>
+<ul>
+<li>Open PuTTY</li>
+<li>Select <strong>Session</strong></li>
+<li>Enter the <code>username@hostname</code> or just the remote <em>hostname</em> or IP address at <strong>Host Name</strong>. Example:</li>
+</ul>
+<pre><code>admin@192.168.1.2
+</code></pre>
+<ul>
+<li>Connection: <strong>SSH</strong></li>
+<li>Port: <strong>22</strong></li>
+<li>(Optional) Name your session in <strong>Saved Session</strong> field and click <strong>Save</strong></li>
+<li>Click <strong>Open</strong></li>
+</ul>
+<div id="disclaimer">DISCLAIMER: You may need to generate/add a private key for authentication.</div>
+<p><img src="../img/putty-session.png" alt="putty session"></p>
+
+<h2>Add a private key for authentication</h2>
+<ul>
+<li><strong>Connections</strong>
+<ul>
+<li><strong>SSH</strong>
+<ul>
+<li><strong>Auth</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Browse and select the <strong>private key</strong> for authentication. It should be a <code>.ppk</code> file.</li>
+</ul>
+<p><img src="../img/putty-auth.png" alt="putty authentication"></p>
+
+<h2>Create a private key with PuTTYGen</h2>
+<p>On Windows:</p>
+<ul>
+<li>Go to Windows <strong>Start</strong> menu
+<ul>
+<li><strong>All Programs</strong>
+<ul>
+<li><strong>PuTTY</strong>
+<ul>
+<li><strong>PuTTYgen</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Parameters:
+<ul>
+<li>Type of key: <strong>RSA</strong></li>
+<li>Number of bits in a generated key: <strong>2048</strong></li>
+</ul>
+</li>
+<li><strong>Generate</strong></li>
+<li>Specify a <strong>passphrase</strong> for the key</li>
+<li><strong>Save private key</strong></li>
+</ul>
+<p>On Linux:</p>
+<pre><code>puttygen -t rsa -b 2048 -C &quot;user@host&quot; -o keyfile.ppk
+</code></pre>
+<p>Check the <a href="https://www.ssh.com/ssh/putty/windows/puttygen" target="_blank">PuTTYGen manual</a> for more details.</p>
+
+<h2>Convert an Amazon .pem key to PuTTY .ppk key</h2>
+<p>On Windows:</p>
+<ul>
+<li>Go to Windows <strong>Start</strong> menu
+<ul>
+<li><strong>All Programs</strong>
+<ul>
+<li><strong>PuTTY</strong>
+<ul>
+<li><strong>PuTTYgen</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Parameters:
+<ul>
+<li>Type of key: <strong>RSA</strong></li>
+<li>Number of bits in a generated key: <strong>2048</strong></li>
+</ul>
+</li>
+<li><strong>Load</strong></li>
+<li>Select your <code>.pem</code> file for the key pair</li>
+<li><strong>Open</strong></li>
+<li><strong>Save private key</strong></li>
+</ul>
+<p>On Linux:</p>
+<pre><code>puttygen keyfile.pem -O private -o keyfile.ppk
+</code></pre>
+<p>Check the <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html#putty-private-key" target="_blank">Amazon Docs</a> for more details.</p>
+
+<p>More about PuTTY and PuTTYGen can be found at the <a href="https://www.ssh.com/ssh/putty/putty-manuals/0.68/index.html" target="_blank">manual page</a>.</p>
+
+
+</div>
+
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+</body>
+</html>

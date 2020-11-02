@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="blog, challenge, linux">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>linux upskill challenge - day 0</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>November 1, 2020 - 1 minute read</h6>
+
+<h1>Day 0 : Preparing the environment</h1>
+
+<p>This is part of the <a href="../challenges/linux-upskill.html">#LinuxUpSkillChallenge</a>. Don’t forget to also check out the <a href="https://github.com/snori74/linuxupskillchallenge/blob/master/00-AWS-Free-Tier.md" target="_blank">Official Instructions</a> and the <a href="https://www.reddit.com/r/linuxupskillchallenge/comments/jm8wlz/how_this_works/" target="_blank">Reddit</a> posts.</p>
+
+<div class="videoWrapper">
+  <iframe width="560" height="349"
+  src="https://www.youtube.com/embed/nj4ySNM-wcY"
+  frameborder="0" allowfullscreen></iframe>
+</div>
+
+<h2>Objectives of the day</h2>
+<ol>
+<li><strong>Sign up to a cloud provider:</strong> you can use <a href="https://aws.amazon.com/free/" target="_blank">AWS</a>, <a href="https://cloud.google.com/" target="_blank">Google Cloud</a>, <a href="https://azure.microsoft.com/" target="_blank">Azure</a>, <a href="https://www.digitalocean.com/" target="_blank">Digital Ocean</a>, <a href="https://www.linode.com/ "target="_blank">Linode</a>, etc. I’m already signup with AWS, so I’m using that.</li>
+
+<li><strong>Launch an Ubuntu instance:</strong> Follow the tutorial <a href="../howtos/howto-aws-ec2-launch-instance.html">How to launch an EC2 instance</a>, select the latest version of Ubuntu and set the security group to <strong>All Traffic / Anywhere</strong>.</li>
+
+<li><strong>Connect to the instance using SSH:</strong> Follow the tutorial on <a href="../howtos/basic-putty.html">Putty Basics</a> or (if you’re using OpenSSH) simply copy the command from AWS instructions.</li>
+</ol>
+
+<h2>Administrative task: <strong>Update/Upgrade the system</strong></h2>
+
+<p>Once connected, submit the commands:</p>
+<pre><code>sudo apt update
+</code></pre>
+<p>And then:</p>
+<pre><code>sudo apt upgrade -y
+</code></pre>
+<p><strong>Done!</strong></p>
+
+<p>For more detail on how I did each day, check out my log on <a href="https://www.reddit.com/user/livia2lima" target="_blank">Reddit</a>. Follow me on <a href="https://twitter.com/search?q=%23LinuxUpSkillChallenge%20%40livialimatweets&amp;src=typed_query&amp;f=live" target="_blank">Twitter</a> for daily updates.</p>
+
+</div>
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+</body>
+</html>
