@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="blog, challenge, linux">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>linux upskill challenge - day 1</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>November 2, 2020 - 1 minute read</h6>
+
+<h1>Day 1 : Know your server!</h1>
+<p> This is part of the <a href="../challenges/linux-upskill.html">#LinuxUpSkillChallenge</a>. Don't forget to also check out the <a href="https://github.com/snori74/linuxupskillchallenge/blob/master/01.md" target="_blank">Official Instructions</a> and the <a href="https://www.reddit.com/r/linuxupskillchallenge/comments/jm8w84/day_1_accessing_your_server/" target="_blank">Reddit</a> post.</p>
+
+<div class="videoWrapper">
+  <iframe width="560" height="349"
+  src="https://www.youtube.com/embed/xaDAB0vbIr4"
+  frameborder="0" allowfullscreen></iframe>
+</div>
+
+<h2>Objectives of the day</h2>
+<ol>
+<li><p><strong>Change your password</strong> if your SSH connection is password-based. Use the command <code>passwd</code></p>
+</li>
+<li><p><strong>More on using SSH</strong>. There are two main methods to login remotely using SSH: password-based &amp; passwordless. Prefer a passwordless connection if possible as it is more secure.</p>
+</li>
+<li><p><strong>Get to know your server</strong> using some basic commands:</p>
+<p><code>uptime</code> - returns information about how long your system has been running.</p>
+<p><code>uname -a</code> - print detailed information about the machine name, Operating System and Kernel.</p>
+<p><code>free -h</code> - gives information about used and unused memory usage and swap memory of a system.</p>
+<p><code>lscpu</code> - returns the number of CPUs, threads, cores, sockets, and other CPU architecture information.</p>
+<p><code>top</code> - provides a dynamic real-time view of the running system.</p>
+<p><code>htop</code> - better and prettier option to <code>top</code></p>
+<p><code>df -h</code> - show the amount of disk space that is free on file systems.</p>
+<p><code>lsblk</code> - prints all block devices (except RAM disks).</p>
+<p><code>tree</code> - prints the directory paths and files in each sub-directory in a tree-like format.</p>
+<p><code>du -h</code> - provides a summary of harddisk or storage space disk usage.</p>
+<p><code>ncdu</code> - better and prettier option to <code>du</code></p>
+<p><code>netstat -i</code> - list out all the network connection in a system.</p>
+<p><code>ifconfig</code> - list all network ports and IP addresses associated with them.</p>
+<p><code>ip addr</code> - better option to <code>ifconfig</code>, that is being deprecated.</p>
+<p>For more detail on how I did each day, check out my log on <a href="https://www.reddit.com/user/livia2lima" target="_blank">Reddit</a>. Follow me on <a href="https://twitter.com/search?q=%23LinuxUpSkillChallenge%20%40livialimatweets&amp;src=typed_query&amp;f=live" target="_blank">Twitter</a> for daily updates.</p>
+</li>
+</ol>
+
+</div>
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+</body>
+</html>
