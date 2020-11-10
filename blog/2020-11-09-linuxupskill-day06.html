@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="blog, challenge, linux">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>linux upskill challenge - day 6</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>November 9, 2020 - 1 minute read</h6>
+
+<h1 id="day-6--vim-crash-course">Day 6 : Vim Crash Course</h1>
+<p> This is part of the <a href="../challenges/linux-upskill.html">#LinuxUpSkillChallenge</a>. Don't forget to also check out the <a href="https://github.com/snori74/linuxupskillchallenge/blob/master/06.md" target="_blank">Official Instructions</a> and the <a href="https://www.reddit.com/r/linuxupskillchallenge/comments/jqidjr/day_6_editing_with_vim/" target="_blank">Reddit</a> posts.</p>
+
+<div class="videoWrapper">
+  <iframe width="560" height="349"
+  src="https://www.youtube.com/embed/dNd3BvJNDIo"
+  frameborder="0" allowfullscreen></iframe>
+</div>
+
+<h2 id="objectives-of-the-day">Objectives of the day</h2>
+<ol>
+<li><strong>Dealing with files</strong></li>
+</ol>
+<p><code>vim filename</code> - create/open file</p>
+<p><code>:w</code> - save</p>
+<p><code>:w newfilename</code> - save as</p>
+<p><code>:q!</code> - close file and trash all changes (the <code>!</code> forces the command)</p>
+<p><code>:wq</code> - save and close</p>
+<ol start="2">
+<li><strong>Navigation</strong></li>
+</ol>
+<p><img alt="" src="../img/vim-hjkl.png"></p>
+<p><code>gg</code> - BOF</p>
+<p><code>G</code> - EOF</p>
+<ol start="3">
+<li><p><strong>Vim modes:</strong> Normal, Insert, Visual, Command. Check out the <a href="https://www.freecodecamp.org/news/vim-editor-modes-explained/" target="_blank">freecodecamp post</a> for more details.</p>
+</li>
+<li><p><strong>Editing</strong></p>
+</li>
+</ol>
+<p><code>d</code> - Cut (delete)</p>
+<p><code>y</code> - Copy (yank)</p>
+<p><code>p</code> - Paste</p>
+<p><code>u</code> to undo the last command</p>
+<p><code>CRTL + R</code> - Redo</p>
+<p><code>/</code> - Find</p>
+<p><code>:%s/old/new/gc</code> - Replace all occurrences of <code>old</code> for <code>new</code>, globally inside the file, and prompt a confirmation for every replacement</p>
+<ol start="4">
+<li>To learn more, please check:</li>
+</ol>
+<p><code>vimtutor</code> - VIM own tutorial</p>
+<p><a href="https://vim-adventures.com/" target="_blank">VIM Adventures</a></p>
+<p><a href="https://exercism.io/my/tracks/vimscript" target="_blank">VimScript on exercism.io</a></p>
+
+<p> For more detail on how I did each day, check out my log on <a href="https://www.reddit.com/user/livia2lima" target="_blank">Reddit</a>. Follow me on <a href="https://twitter.com/search?q=%23LinuxUpSkillChallenge%20%40livialimatweets&amp;src=typed_query&amp;f=live" target="_blank">Twitter</a> for daily updates.</p>
+
+</div>
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+</body>
+</html>
