@@ -54,7 +54,7 @@
 <p>If you want to hone your cabling skills, you can <a href="howto-make-network-cable.html">make your own crossover cable</a> for this tutorial. But if you don't want the trouble of making a cable, just buy a pre-made <a href="https://www.amazon.com/Tripp-Lite-350MHz-Molded-Cross-over/dp/B0056YN7QE/ref=sr_1_3?dchild=1&keywords=crossover+ethernet+cable+cat5&qid=1602262952&sr=8-3" target="_blank">crossover ethernet cable</a>.</p>
 <p>Once you have your cable settled, connect it to the computers.</p>
 
-<div><img alt="connected cables" src="/home/livia/Documents/livialima-net/img/cables-connected-p2p.jpg"  ><br></div>
+<div><img alt="connected cables" src="../img/cables-connected-p2p.jpg"  ><br></div>
 
 
 <h2 id="step_two">Step 2 : Set a static IP address on both computers</h2>
@@ -63,13 +63,13 @@
 <p>Make sure that both computers are on the same subnet (like 192.168.1.1 and 192.168.1.2) and use the same mask (like 255.255.255.248).</p>
 <p>There are two possible configuration files in Linux systems (consider <code>enp1s0</code> and <code>eth0</code> as Ethernet interfaces):</p>
 <p><strong>/etc/sysconfig/network-scripts/ifccfg-enp1s0</strong><br>
-<img alt="config file /etc/sysconfig/network-scripts/ifccfg-enp1s0" src="/home/livia/Documents/livialima-net/img/static_ip-pc1.png"  ></p>
+<img alt="config file /etc/sysconfig/network-scripts/ifccfg-enp1s0" src="../img/static_ip-pc1.png"  ></p>
 <p><strong>/etc/network/interfaces</strong><br>
-<img alt="static ip pc2" src="/home/livia/Documents/livialima-net/img/static_ip-pc2.png"  ></p>
+<img alt="static ip pc2" src="../img/static_ip-pc2.png"  ></p>
 <p>With that ready you can do the first test: <code>ping ip_address</code></p>
 <p>Example:</p>
-<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>ping&nbsp;192.168.1.1</span></span></div></pre><p><img alt="ping pc1 pc2" src="/home/livia/Documents/livialima-net/img/ping-pc1-pc2.png"  >
-<img alt="ping pc2 pc1" src="/home/livia/Documents/livialima-net/img/ping-pc2-pc1.png"  ></p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>ping&nbsp;192.168.1.1</span></span></div></pre><p><img alt="ping pc1 pc2" src="../img/ping-pc1-pc2.png"  >
+<img alt="ping pc2 pc1" src="../img/ping-pc2-pc1.png"  ></p>
 <p>That confirms both sides are connected and seeing each other.</p>
 
 
@@ -80,7 +80,7 @@
 <p>To allow incoming SSH connections from a specific IP address named 192.168.1.2, enter:</p>
 <pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sudo&nbsp;ufw&nbsp;allow&nbsp;from&nbsp;192.168.1.2&nbsp;to&nbsp;any&nbsp;port&nbsp;22</span></span></div></pre><p>To enable ufw:</p>
 <pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sudo&nbsp;ufw&nbsp;enable</span></span></div></pre><p>To check the status:</p>
-<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sudo&nbsp;ufw&nbsp;status</span></span></div></pre><p><img alt="ufw status" src="/home/livia/Documents/livialima-net/img/ufw-status-pc2.png"  ></p>
+<pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sudo&nbsp;ufw&nbsp;status</span></span></div></pre><p><img alt="ufw status" src="../img/ufw-status-pc2.png"  ></p>
 <p>If <code>ufw</code> was not enabled the output would be:</p>
 <pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sudo&nbsp;ufw&nbsp;status</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>Status:&nbsp;inactive</span></span></div></pre>
 
