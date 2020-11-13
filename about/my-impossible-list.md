@@ -38,7 +38,8 @@ The impossible list should always evolve, listing experiences that lead to other
 ## Geek Goals
 Based on [The Coders Bucket List](https://dev.to/remast/the-coders-bucket-list-138m)
 - ~~Bring a website to production~~ ([you are looking at this beauty!](https://livialima.net "my website"))
-- Learn to use vim and emacs **[Vim done]**
+- Learn to use vim and emacs
+  - [Vim done](../blog/2020-11-09-linuxupskill-day6.html "my Vim Crash Course")
 - Learn Shell Scripting **[in progress]**
 - Compile my own Linux Kernel
 - Install and run stuff on FreeBSD
