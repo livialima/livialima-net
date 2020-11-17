@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="blog, challenge, linux">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>linux upskill challenge - day 8</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>November 16, 2020 - 1 minute read</h6>
+
+<h1 data-line-end=1 ><a id="Day_8__Text_Processing_0"></a>Day 8 : Text Processing</h1>
+<p> This is part of the <a href="../challenges/linux-upskill.html">#LinuxUpSkillChallenge</a>. Don't forget to also check out the <a href="https://github.com/snori74/linuxupskillchallenge/blob/master/08.md" target="_blank">Official Instructions</a> and the <a href="https://www.reddit.com/r/linuxupskillchallenge/comments/jrsb4e/day_8_the_infamous_grep/" target="_blank">Reddit</a> posts.</p>
+
+<div class="videoWrapper">
+  <iframe width="560" height="349"
+  src="https://www.youtube.com/embed/kG5JGJN5iTc"
+  frameborder="0" allowfullscreen></iframe>
+</div>
+
+<h2>Objectives of the day</h2>
+<ol>
+<li><strong>Data Streams</strong></li>
+</ol>
+<p>There are three standard streams that are established when a Linux command is executed:</p>
+<p><code>STDIN</code>: the standard input stream. <a href="https://en.wikipedia.org/wiki/File_descriptor" target="_blank">File descriptor</a> is 0.</p>
+<p><code>STDOUT</code>: the standard output stream. File descriptor is 1.</p>
+<p><code>STDERR</code>: the standard error stream. File descriptor is 2.</p>
+<p><img src="../img/stdin-stdout-stderr.png" alt="Linux Data Streams"></p>
+<ol>
+<li><strong>Print and output</strong></li>
+</ol>
+<p><code>echo</code>: outputs the strings it is being passed as arguments.</p>
+<p><code>cat</code>: reads files sequentially, writing them to standard output.</p>
+<p><code>tac</code>: same as cat but prints files in reverse.</p>
+<p><code>head</code>: display the beginning of a text file or piped data.</p>
+<p><code>tail</code>: display the tail end of a text file or piped data.</p>
+<ol>
+<li><strong>Filtering and Transforming Text</strong></li>
+</ol>
+<p><code>sort</code>: prints the lines of its input in sorted order.</p>
+<p><code>uniq</code>: outputs the text with adjacent identical lines collapsed to one, unique line of text.</p>
+<p><code>wc</code>: reads standard input and generates a count of lines, words and/or bytes.</p>
+<p><code>cut</code>: extract sections from each line of input.</p>
+<p><code>grep</code>: reads data sets and searches for lines that match an expression. See Professor Brian Kernighan explain <a href="https://youtu.be/NTfOnGZUZDk" target="_blank">where GREP came from</a>.</p>
+<p><code>sed</code>: parses and transforms text.</p>
+<p><code>awk</code>: scans the input file for lines that match any of a set of patterns specified.</p>
+<ol>
+<li><strong>Shell operators</strong></li>
+</ol>
+<p><a href="https://unix.stackexchange.com/questions/159513/what-are-the-shells-control-and-redirection-operators">More about shell operators</a></p>
+<p>3.1. <strong>List operators</strong></p>
+<p><code>;</code> : will run one command after another has finished, irrespective of the outcome of the first.</p>
+<p><code>&amp;</code>: “ampersand” runs the command in background.</p>
+<p>3.2. <strong>Redirection operators</strong></p>
+<p><code>&gt;</code> : directs the output of a command into a file.</p>
+<p><code>&gt;&gt;</code>: does the same as <code>&gt;</code>, except that if the target file exists, the new data are appended.</p>
+<p><code>&lt;</code>: gives input to a command.</p>
+<p>3.3. <strong>Pipe operator</strong></p>
+<p>See Professor Brian Kernighan explain <a href="https://youtu.be/bKzonnwoR2I" target="_blank">how pipelines work</a>.</p>
+<p><code>|</code>: “pipe” redirects the output of the previous command as the input of the next.</p>
+<p>3.4. <strong>Logical operators</strong></p>
+<p><code>||</code>: “double pipe” is the equivalent of a logical OR.</p>
+<p><code>&amp;&amp;</code>: “double ampersand” is the equivalent of a logical AND.</p>
+<ol>
+
+<li><strong>Regular Expressions</strong></li>
+</ol>
+<p>Regular expressions (Regex) are special characters which help search data, matching complex patterns. See more at <a href="https://www.linux.com/topic/desktop/introduction-regular-expressions-new-linux-users/" target="_blank">this article</a>.</p>
+<p><code>^</code>: matches the beginning of the line.</p>
+<p><code>$</code>: matches the end of the line.</p>
+<p><code>^$</code>: blank lines.</p>
+<p><code>?</code>: matches character one time, optional.</p>
+<p><code>+</code>: matches character at least one time.</p>
+<p><code>.</code>: matches any character, except <code>\n</code>.</p>
+<p><code>*</code>: matches character, zero or more times.</p>
+<p><code>.*</code>: matches any character, zero or more times.</p>
+<p><code>[]</code>: list (represents only one character).</p>
+<p><code>{}</code>: range</p>
+<ol>
+
+<li><strong>Administrative task:</strong> list all the IP’s that have unsuccessfully tried to login to your server as root and save it to the file: ~/attackers.txt.</li>
+</ol>
+<pre><code>grep &quot;root&quot; /var/log/auth.log | grep -o &quot;[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}&quot; | sort | uniq &gt; ~/attackers.txt
+</code></pre>
+<p>You might like to share and compare with others doing the course how heavily you’re “under attack”!</p>
+
+<p>For more detail on how I did each day, check out my log on <a href="https://www.reddit.com/user/livia2lima" target="_blank">Reddit</a>. Follow me on <a href="https://twitter.com/search?q=%23LinuxUpSkillChallenge%20%40livialimatweets&amp;src=typed_query&amp;f=live" target="_blank">Twitter</a> for daily updates.</p>
+
+</div>
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+</body>
+</html>
