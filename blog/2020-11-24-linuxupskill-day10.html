@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="blog, challenge, linux">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>linux upskill challenge - day 10</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>November 21, 2020 - 1 minute read</h6>
+
+<h1>Day 10 : Scheduling Tasks</h1>
+<p> This is part of the <a href="../challenges/linux-upskill.html">#LinuxUpSkillChallenge</a>. Don't forget to also check out the <a href="https://github.com/snori74/linuxupskillchallenge/blob/master/10.md" target="_blank">Official Instructions</a> and the <a href="https://www.reddit.com/r/linuxupskillchallenge/comments/jt1yg9/day_10_getting_the_computer_to_do_your_work_for/" target="_blank">Reddit</a> posts.</p>
+
+<div class="videoWrapper">
+  <iframe width="560" height="349"
+  src="https://www.youtube.com/embed/ktjabe8enxU"
+  frameborder="0" allowfullscreen></iframe>
+</div>
+
+<h2>Objectives of the day</h2>
+<ol>
+<li><strong>Cron and crontab</strong></li>
+</ol>
+<p><code>crontab -l</code></p>
+<p><code>vim /etc/crontab</code></p>
+<p><code>m</code> - minute (0-59)</p>
+<p><code>h</code> - hour (0-23)</p>
+<p><code>dom</code> - day of the month (1-31)</p>
+<p><code>mon</code> - month of the year (1-12)</p>
+<p><code>dow</code> - day of the week (sun-sat)</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">@reboot   - after reboots
+@yearly   "0 0 1 1 *"
+@monthly  "0 0 1 * *"
+@weekly   "0 0 * * 0"
+@daily    "0 0 * * *"
+@hourly   "0 * * * *"</span></span></pre>
+<ol start="2">
+<li><strong>Timers</strong> <code>systemctl list-timers</code></li>
+<li><strong>Log Rotate</strong></li>
+<li><strong>Journaling</strong> <code>journalctl</code></li>
+</ol>
+
+<p>For more detail on how I did each day, check out my log on <a href="https://www.reddit.com/user/livia2lima" target="_blank">Reddit</a>. Follow me on <a href="https://twitter.com/search?q=%23LinuxUpSkillChallenge%20%40livialimatweets&amp;src=typed_query&amp;f=live" target="_blank">Twitter</a> for daily updates.</p>
+
+</div>
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+</body>
+</html>
