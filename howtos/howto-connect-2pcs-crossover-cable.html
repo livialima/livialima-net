@@ -94,7 +94,7 @@
 <h2 id="step_five">Step 5 : Use SFTP</h2>
 <p><strong>For file transfer</strong> you can use <a href="https://filezilla-project.org/" target="_blank">FileZilla</a>, that runs in server and client versions in different platforms (including Windows, Mac and Linux). Or, if you are using Linux or Mac, SFTP is a good choice.</p>
 <p><strong>SFTP (SSH File Transfer Protocol)</strong> is a secure file protocol that is used to access, manage, and transfer files over an encrypted SSH connection. SFTP works on a client-server model.</p>
-<p>Check out the tutorial <a href="basic-commands-sftp.html">SFTP Basic Commands</a> to see it in detail.</p>
+<p>Check out the tutorial <a href="basic-sftp.html">SFTP Basic Commands</a> to see it in detail.</p>
 <p>In this tutorial scenario, open a SFTP connection to the other computer: use the <code>sftp</code> command followed by the username and the IP address:</p>
 <pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sftp&nbsp;demo@192.168.1.2</span></span></div></pre><p>You will be prompted to enter the user password. Once connected, you will be presented with the <code>sftp</code> prompt, and you can start interacting with the remote server:</p>
 <pre class="editor-colors lang-"><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>Connected&nbsp;to&nbsp;demo@192.168.1.2</span></span></div><div class="line"><span class="syntax--text syntax--plain syntax--null-grammar"><span>sftp&gt;</span></span></div></pre><p>Use <code>get</code> to download files and <code>put</code> to upload.</p>

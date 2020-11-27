@@ -37,6 +37,9 @@ Connected to demo@192.168.1.2.
 sftp>
 </pre>
 
+<p>When using a SSH identity file (private key) for public key authentication:</p>
+<p><code>sftp -i keypair.pem demo@192.168.1.2</code></p>
+
 <h2  class="highlight">Check current directory</h2>
 
 <p><strong>lpwd</strong> – print the current directory on your <em>local</em> system</p>
@@ -55,7 +58,7 @@ sftp>
 
 <h2  class="highlight">List files</h2>
 
-<p><strong>lpwd</strong> – list the files in the current directory on your <em>local</em> system</p>
+<p><strong>lls</strong> – list the files in the current directory on your <em>local</em> system</p>
 <pre>
 sftp> lls
  Desktop      lab           py3-venv

@@ -1,6 +1,6 @@
 # Day 11 : Finding things...
 
-This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/11.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/comments/jusblw/day_11_finding_things/) posts.
+This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/11.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/) posts.
 
 *video*
 

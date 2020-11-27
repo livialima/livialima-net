@@ -1,6 +1,6 @@
 # Day 9 : Port Security
 
-This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/09.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/comments/jsfhte/day_9_ports_open_and_closed/) posts.
+This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/09.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/) posts.
 
 *video*
 

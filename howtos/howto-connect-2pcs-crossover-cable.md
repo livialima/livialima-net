@@ -101,7 +101,7 @@ Check out the tutorial [How to setup and use SSH Server on Linux](howto-setup-ss
 
 **SFTP (SSH File Transfer Protocol)** is a secure file protocol that is used to access, manage, and transfer files over an encrypted SSH connection. SFTP works on a client-server model.
 
-Check out the tutorial [SFTP Basic Commands](basic-commands-sftp.html) to see it in detail.
+Check out the tutorial [SFTP Basic Commands](basic-sftp.html) to see it in detail.
 
 In this tutorial scenario, open a SFTP connection to the other computer: use the ```sftp``` command followed by the username and the IP address:
 

@@ -1,6 +1,6 @@
 # Day 5 : Command line basics
 
-This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/05.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/comments/jopvbf/day_5_more_or_less/) posts.
+This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/05.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/) posts.
 
 *video*
 

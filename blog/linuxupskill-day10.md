@@ -1,6 +1,6 @@
 # Day 10 : Timers and scheduling
 
-This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/10.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/comments/jt1yg9/day_10_getting_the_computer_to_do_your_work_for/) posts.
+This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/10.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/) posts.
 
 *video*
 

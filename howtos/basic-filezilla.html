@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="tool, sftp">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>basic filezilla</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>Posted on November 27, 2020 - 2 minute read</h6>
+
+<h1>FileZilla Basics</h1>
+<p><strong><a href="https://filezilla-project.org/" target="_blank">FileZilla</a></strong> is a free and open-source FTP client.</p>
+<h2>Basic Connection</h2>
+<p>Using Quickconnect bar:</p>
+<ul>
+<li>Enter the remote <em>hostname</em> or <em>IP address</em> at <strong>Host</strong>.</li>
+<li>Enter the remote <em>username</em> at <strong>Username</strong> and the <em>password</em> at <strong>Password</strong>.</li>
+<li><strong>Port</strong>: 21 for FTP, 22 for SFTP</li>
+<li>Click <strong>Quickconnect</strong>. Example:
+<p><img src="../img/filezilla-quickconnect.png" alt="FileZilla Quickconnect"></li></p>
+</ul>
+<p>Using Site Manager:</p>
+<ul>
+<li>On the <strong>File</strong> menu, click <strong>Site Manager</strong>.</li>
+<li>In the Protocol list box, select <strong>FTP</strong>.</li>
+<li>In the <strong>Host</strong> text box, type the <em>hostname</em> or <em>IP address</em>.</li>
+<li>In the <strong>Port</strong> text box, type <strong>21</strong>.</li>
+<li>In the <strong>Logon Type</strong> list box, select <strong>Normal</strong>.</li>
+<li>In the <strong>User</strong> text box, type your <em>username</em>.</li>
+<li>In the <strong>Password</strong> text box type your <em>password</em>.</li>
+<li>Click <strong>Connect</strong>.</li>
+</ul>
+<p><img src="../img/filezilla-site-manager.png" alt="FileZilla Site Manager"></p>
+<h2>Add a private key for SSH authentication</h2>
+<ul>
+<li>On the <strong>Edit</strong> menu, click <strong>Settings</strong>.</li>
+<li>Under Select Page, click <strong>Connection</strong>, and then click <strong>SFTP</strong>. A list of currently installed private keys appears.</li>
+<li>Click <strong>Add key file</strong>. Select the key, and then click <strong>Open</strong>.</li>
+</ul>
+<p><img src="../img/filezilla-publickey.png" alt="FileZilla PublicKey"></p>
+<ul>
+<li>On the <strong>File</strong> menu, click <strong>Site Manager</strong>.</li>
+<li>In the Protocol list box, select <strong>SFTP</strong>.</li>
+<li>In the <strong>Host</strong> text box, type the <em>hostname</em> or <em>IP address</em>.</li>
+<li>In the <strong>Port</strong> text box, type <strong>22</strong>.</li>
+<li>In the <strong>Logon Type</strong> list box, select <strong>Normal</strong>.</li>
+<li>In the <strong>User</strong> text box, type your <em>username</em>.</li>
+<li>Leave the <strong>Password</strong> text box blank.</li>
+<li>Click <strong>Connect</strong>.</li>
+</ul>
+<p><img src="../img/filezilla-site-manager-sftp.png" alt="FileZilla Site Manager"></p>
+<p>After a few seconds, FileZilla establishes a connection to the server.
+FileZilla may display a message that the server’s host key is unknown. To trust the server permanently, select the Always trust this host, add this key to the cache check box, and then click OK.</p>
+<h2>Tranfering files</h2>
+<p>Once a remote connection is open, you can navigate on the server almost like navigating on your local machine. The current local directory tree is displayed on the left side of the main window by default, the remote directory is displayed on the right side.</p>
+<p>To transfer directories and/or multiple files:</p>
+<ul>
+<li>Select the files.</li>
+<li>Right-click the selection.</li>
+<li>Then you can click on Upload/Download in the popup menu.</li>
+</ul>
+<p>Or drag the files from one side and drop them on the other side.</p>
+<p><img src="../img/filezilla-transfer.png" alt="FileZilla transfer file"></p>
+<p>More about FileZilla can be found at the <a href="https://wiki.filezilla-project.org/Documentation" target="_blank">manual page</a>.</p>
+
+
+</div>
+
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+</body>
+</html>

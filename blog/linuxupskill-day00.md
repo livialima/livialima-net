@@ -1,6 +1,6 @@
  # Day 0 : Preparing the environment
 
-This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/00-AWS-Free-Tier.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/comments/jm8wlz/how_this_works/) posts.
+This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/00-AWS-Free-Tier.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/) posts.
 
 *video*
 

@@ -1,6 +1,6 @@
  # Day 1 : Accessing your server
 
- This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/01.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/comments/jm8w84/day_1_accessing_your_server/) post.
+ This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/01.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/) post.
 
  *video*
 

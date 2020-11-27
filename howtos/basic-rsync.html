@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="tool, sftp">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>basic rsync commands</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>Posted on November 27, 2020 - 2 minute read</h6>
+
+<h1>RSync Basic Commands</h1>
+<p><strong><a href="https://rsync.samba.org/" target="_blank">rsync</a></strong> (remote sync) is an open source utility used for synchronizing files and directories between two different systems, providing fast incremental file transfer. It is a great tool to perform backups.</p>
+<h2>Basic usage</h2>
+<p>To sync the contents of source directory(dir1) to a destination directory(dir2) on the same system:</p>
+<p><code>rsync -a dir1/ dir2 </code></p>
+<p>To sync the contents of a local directory(dir1) to a remote directory(dir2):</p>
+<p><code>rsync -a dir1/ username@remote_host:dir2</code></p>
+<p>To sync the contents of a local directory(dir1) to a remote directory(dir2), when using a SSH identity file (private key) for public key authentication:</p>
+<p><code>rsync -e "ssh -i keypair.pem" -a dir1/ username@remote_host:dir2</code></p>
+<h2>Verbose (–verbose, -v)</h2>
+<p>By default, rsync works silently. This option allows you to see what’s happening during the transfer, even if no files are transfered.</p>
+<p><code>rsync -v dir1/ dir2 </code></p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ rsync -v dir1/ livia@192.168.1.2:remote_dir
+livia@192.168.1.2's password:
+skipping directory .
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">sent 16 bytes  received 12 bytes  6.22 bytes/sec
+total size is 0  speedup is 0.00
+$</span></span></pre>
+<h2>Archive (–archive, -a)</h2>
+<p>It is a quick way of saying you want to preserve almost everything.</p>
+<p><code>rsync -a dir1/ dir2 </code></p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ rsync -av dir1/ livia@192.168.1.2:remote_dir
+sending incremental file list
+./
+file1
+file2
+file3
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">sent 2,183 bytes  received 589 bytes  792.00 bytes/sec
+total size is 498  speedup is 0.18
+$</span></span></pre>
+<h2>Recursive (–recursive, -r)</h2>
+<p>This tells rsync to copy directories recursively.</p>
+<p><code>rsync -r dir1/ dir2 </code></p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ rsync -rav dir1/ livia@192.168.1.2:remote_dir
+sending incremental file list
+subdir1/
+subdir1/subfile1
+subdir1/subfile2
+subdir1/subfile3
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">sent 391 bytes  received 77 bytes  133.71 bytes/sec
+total size is 83  speedup is 0.18
+$</span></span></pre>
+<p><strong>DISCLAIMER:</strong> Noticed that there is a trailing slash (/) at the end of the first argument in <code>dir1/</code></p>
+<p><img src="../img/rsync-trailing-slash.png" alt="trailing slash"></p>
+<p>This is necessary to mean “the contents of dir1”. The alternative, without the trailing slash, would place <code>dir1</code>, including the directory, within <code>dir2</code>. This would create a hierarchy that looks like:</p>
+<p><code>~/dir2/dir1/[files]</code></p>
+<p>Compare this output with the trailing slash:</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ rsync -rav dir1/ livia@192.168.1.2:remote_dir
+sending incremental file list
+./
+file1
+file2
+file3
+subdir1/
+subdir1/subfile1
+subdir1/subfile2
+subdir1/subfile3
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">sent 534 bytes  received 145 bytes  194.00 bytes/sec
+total size is 83  speedup is 0.12
+$ tree remote_dir/
+remote_dir/
+├── file1
+├── file2
+├── file3
+└── subdir1
+</span>    <span class="syntax--meta syntax--paragraph syntax--text">├── subfile1
+    ├── subfile2
+    └── subfile3
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">1 directory, 6 files
+livia@antix1:~
+$</span></span></pre>
+<p>And when we remove the trailing slash:</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ rsync -rav dir1 livia@192.168.1.2:remote_dir
+sending incremental file list
+dir1/
+dir1/file1
+dir1/file2
+dir1/file3
+dir1/subdir1/
+dir1/subdir1/subfile1
+dir1/subdir1/subfile2
+dir1/subdir1/subfile3
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">sent 850 bytes  received 260 bytes  246.67 bytes/sec
+total size is 83  speedup is 0.07
+$ tree remote_dir/
+remote_dir/
+└── dir1
+</span>    <span class="syntax--meta syntax--paragraph syntax--text">├── file1
+    ├── file2
+    ├── file3
+    └── subdir1
+</span>        <span class="syntax--meta syntax--paragraph syntax--text">├── subfile1
+        ├── subfile2
+        └── subfile3
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">2 directories, 6 files
+livia@antix1:~
+$</span></span></pre>
+<p>You can see here that the directory itself is transferred.</p>
+<h2>Update (–update, -u)</h2>
+<p>This forces rsync to skip any files which exist on the destination and have a modified time that is newer than the source file.</p>
+<p><code>rsync -u dir1/ dir2 </code></p>
+<p>Notice how the size and modified date changes from <code>83 Nov 26 16:56 file1</code> to <code>677 Nov 27 14:10 file1</code>.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ ls -lh remote_dir/
+total 8.0K
+-rw-rw-r-- 1 livia livia   83 Nov 26 16:56 file1
+-rw-rw-r-- 1 livia livia    0 Nov 26 15:58 file2
+-rw-rw-r-- 1 livia livia    0 Nov 26 15:58 file3
+drwxrwxr-x 2 livia livia 4.0K Nov 27 13:42 subdir1
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">$ rsync -rauv dir1/ livia@192.168.1.2:remote_dir
+livia@192.168.1.2's password:
+sending incremental file list
+./
+file1
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">sent 934 bytes  received 45 bytes  217.56 bytes/sec
+total size is 677  speedup is 0.69
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">$ ls -lh remote_dir/
+total 8.0K
+-rw-rw-r-- 1 livia livia  677 Nov 27 14:10 file1
+-rw-rw-r-- 1 livia livia    0 Nov 26 15:58 file2
+-rw-rw-r-- 1 livia livia    0 Nov 26 15:58 file3
+drwxrwxr-x 2 livia livia 4.0K Nov 27 13:42 subdir1
+$</span></span></pre>
+<h2>Dry Run (–dry-run, -n)</h2>
+<p>This makes rsync perform a trial run that doesn’t make any changes (and produces mostly the same output as a real run). Good resource to test the parameters before doing a big transfer.</p>
+<p><code>rsync -n dir1/ dir2 </code></p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ rsync -rauvn dir1/ livia@192.168.1.2:remote_dir
+sending incremental file list
+./
+file1
+file2
+file3
+subdir1/
+subdir1/subfile1
+subdir1/subfile2
+subdir1/subfile3
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">sent 235 bytes  received 41 bytes  78.86 bytes/sec
+total size is 677  speedup is 2.45 (DRY RUN)
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">$ tree remote_dir/
+remote_dir/
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">0 directories, 0 files
+livia@antix1:~
+$</span></span></pre>
+<h2>Progress (–progress, -P)</h2>
+<p>This option tells rsync to print information showing the progress of the transfer.</p>
+<p><code>rsync -P dir1/ dir2 </code></p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ rsync -rauvP dir1/ livia@192.168.1.2:remote_dir
+sending incremental file list
+./
+big-file
+</span>     <span class="syntax--meta syntax--paragraph syntax--text">67,562,098 100%    1.16MB/s    0:00:55 (xfr#1, to-chk=7/9)
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">sent 67,562,098 bytes  received 100 bytes  945,162.08 bytes/sec
+total size is 67,562,198  speedup is 1.00
+$</span></span></pre>
+<p>More about rsync can be found at the <a href="https://download.samba.org/pub/rsync/rsync.1" target="_blank">manual page</a>.</p>
+
+
+</div>
+
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="howto-index.html">All Tools & Tutorials</a>
+</div>
+</body>
+</html>

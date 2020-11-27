@@ -1,6 +1,6 @@
  # Day 2 : Basic navigation
 
-This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/02.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/comments/jmuxc1/day_2_basic_navigation/) posts.
+This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/02.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/) posts.
 
 *video*
 
@@ -26,7 +26,7 @@ This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). 
 ```apropos```
 ```tldr```
 4. Administrative task: **Customize your prompt**
-```export PS1="\u@\h \W\$"``` 
+```export PS1="\u@\h \W\$"```
 For more about prompt customization, check out the [Bashrc Generator](http://bashrcgenerator.com/) and [Customize & Colorize Your Bash Prompt/Terminal](https://youtu.be/C92eaq_bZR8).
 
 **Done!**

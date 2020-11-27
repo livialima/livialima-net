@@ -10,6 +10,11 @@ demo@192.168.1.2's password:
 Connected to demo@192.168.1.2.
 sftp>
 ```
+
+When using a SSH identity file (private key) for public key authentication:
+
+```sftp -i keypair.pem demo@192.168.1.2```
+
 ## Check current directory
 **lpwd** – print the current directory on your *local* system
 ```
@@ -24,7 +29,7 @@ Remote working directory: /home/demo
 sftp>
 ```
 ## List files
-**lpwd** – list the files in the current directory on your *local* system
+**lls** – list the files in the current directory on your *local* system
 ```
 sftp> lls
  Desktop      lab		   py3-venv

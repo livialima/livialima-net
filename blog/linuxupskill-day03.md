@@ -1,6 +1,6 @@
  # Day 3 : Power trip!
 
- This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/03.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/comments/jnhmad/day_3_power_trip/) posts.
+ This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). Don't forget to also check out the [Official Instructions](https://github.com/snori74/linuxupskillchallenge/blob/master/03.md) and the [Reddit](https://www.reddit.com/r/linuxupskillchallenge/) posts.
 
  *video*
 
