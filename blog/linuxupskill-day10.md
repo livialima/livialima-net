@@ -4,8 +4,7 @@ This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). 
 
 *video*
 
-## Objectives of the day
-1. **Cron and crontab**
+## 1. **Cron and crontab**
 
 ```crontab -l```
 
@@ -30,8 +29,11 @@ This is part of the [#LinuxUpSkillChallenge](../challenges/linux-upskill.html). 
 @hourly   "0 * * * *"
 ```
 
-2. **Timers** ```systemctl list-timers```
-3. **Log Rotate**
-4. **Journaling** ```journalctl```
+## 2. **Timers**
+
+```
+systemctl list-timers
+```
+
 
 For more detail on how I did each day, check out my log on [Reddit](https://www.reddit.com/user/livia2lima). Follow me on [Twitter](https://twitter.com/search?q=%23LinuxUpSkillChallenge%20%40livialimatweets&src=typed_query&f=live) for daily updates.

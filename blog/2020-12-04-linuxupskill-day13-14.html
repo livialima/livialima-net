@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="blog, challenge, linux">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>linux upskill challenge - days 13 & 14</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>December 4, 2020 - 2 minute read</h6>
+
+<h1>Days 13 & 14 : Users, Groups and Permissions</h1>
+<p> This is part of the <a href="../challenges/linux-upskill.html">#LinuxUpSkillChallenge</a>. Don't forget to also check out the Official Instructions for days <a href="https://github.com/snori74/linuxupskillchallenge/blob/master/13.md" target="_blank">13</a> and <a href="https://github.com/snori74/linuxupskillchallenge/blob/master/14.md" target="_blank">14</a>. Also check the <a href="https://www.reddit.com/r/linuxupskillchallenge/" target="_blank">Reddit</a> posts.</p>
+
+<div class="videoWrapper">
+  <iframe width="560" height="349"
+  src="https://www.youtube.com/embed/mBcExazxLU8"
+  frameborder="0" allowfullscreen></iframe>
+</div>
+
+<h2>1. Groups</h2>
+<p>Options to check the available groups:</p>
+<p><code>cat /etc/group</code> - see all users</p>
+<p><code>grep GID /etc/login.defs</code> - to check the min/max GID for normal and system users</p>
+<p><code>getent group {1000..6000}</code> - to retrieve only the normal groups</p>
+<ul>
+<li>Create a new group: <code>sudo groupadd groupname</code></li>
+<li>Delete an existing group: <code>sudo groupdel groupname</code></li>
+<li>Change the group name: <code>sudo groupmod -n new_group_name old_group_name</code></li>
+<li>Change file’s group ownership: <code>sudo chgrp groupname file/folder</code></li>
+</ul>
+<h2>2. Users</h2>
+<p>Options to check the available users:</p>
+<p><code>cat /etc/passwd</code> - see all usernames, names of users, home directories</p>
+<p><code>grep UID /etc/login.defs</code> - to check the min/max UID for normal and system users</p>
+<p><code>getent passwd {1000..6000}</code> - to retrieve only the normal users</p>
+<p><code>groups username</code> - to see the list of groups the user is assigned to</p>
+<ul>
+<li>Create User: <code>sudo adduser username</code></li>
+<li>Create a new user belonging to the specified group: <code>sudo adduser --ingroup group username</code></li>
+<li>Change user password: <code>sudo passwd username</code></li>
+<li>Delete user: <code>sudo userdel username</code></li>
+<li>Change user’s name: <code>sudo usermod -l newname user</code></li>
+<li>Change user’s primary group: <code>sudo usermod -g newgroup user</code></li>
+<li>Add user to secondary groups: <code>sudo usermod -aG group1,group2 user</code></li>
+<li>Change file’s user ownership: <code>sudo chown -R username file/folder</code></li>
+</ul>
+<h2>3. Sudo and sudoers</h2>
+<p>The sudoers file is a file used to allocate system rights to system users. This allows the administrator to control who does what. When you want to run a command that requires root rights, Linux checks your username against the sudoers file.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ sudo usermod -aG sudo someuser
+someuser is not in the sudoers file.  This incident will be reported.</span></span></pre>
+<p>To edit the sudoers file in a safe fashion, <code>visudo</code> is recommended. Visudo locks the sudoers file against multiple simultaneous edits, provides basic sanity checks, and checks for parse errors before installing the edited file.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">## User privilege specification
+root    ALL=(ALL:ALL) ALL
+user    ALL=(ALL:ALL) ALL
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text"># Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+%group ALL=(ALL) ALL
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text"># Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL</span></span></pre>
+<ol start="4">
+<li>Permissions</li>
+</ol>
+<p>Each file and directory has three user based permission groups:</p>
+<ul>
+<li><strong>user</strong> : apply only the owner of the file or directory, they will not impact the actions of other users.</li>
+<li><strong>group</strong> : apply only to the group that has been assigned to the file or directory, they will not affect the actions of other users.</li>
+<li><strong>others</strong> : apply to all other users on the system.</li>
+</ul>
+<p>Each file or directory has three basic permission types:</p>
+<ul>
+<li><strong>read</strong> : capability to read the contents of the file.</li>
+<li><strong>write</strong> : capability to write or modify a file or directory.</li>
+<li><strong>execute</strong> : capability to execute a file or view the contents of a directory.</li>
+</ul>
+<p><img src="../img/linux-file-permissions.png" alt="symbolic"></p>
+<p><strong>Octal notation</strong> is a numerical system for modifying permissions. Each octal permission can be represented by 3 or 4 numbers; where each of these numbers is an “octal”, meaning they range from 0-7. They basically combine the following:</p>
+<ul>
+<li>7 = read(4) + write(2) + execute(1)</li>
+<li>6 = read(4) + write(2)</li>
+<li>5 = read(4) + execute(1)</li>
+<li>4 = read(4)</li>
+<li>3 = write(2) + execute(1)</li>
+<li>2 = write</li>
+<li>1 = execute</li>
+</ul>
+<p><img src="../img/linux-file-permissions-octal.png" alt="octal"></p>
+<p><strong>umask</strong> is used to control the default file permission for new files. It uses a four-digit octal number but can also be expressed using symbolic values.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ umask
+0002
+$ umask -S
+u=rwx,g=rwx,o=rx
+$</span></span></pre>
+<p><strong>chmod</strong></p>
+<ul>
+<li>Change permissions of a file or folder (octal): <code>sudo chmod 777 folder/file</code></li>
+<li>Change permissions of a file or folder (symbolic): <code>sudo chmod +x folder/file</code></li>
+</ul>
+<p>More about files and permissions, check out this <a href="https://youtu.be/zRw0SKaXSfI">Eli the Computer Guy</a> video.</p>
+
+<p>For more detail on how I did each day, check out my log on <a href="https://www.reddit.com/user/livia2lima" target="_blank">Reddit</a>. Follow me on <a href="https://twitter.com/search?q=%23LinuxUpSkillChallenge%20%40livialimatweets&amp;src=typed_query&amp;f=live" target="_blank">Twitter</a> for daily updates.</p>
+
+</div>
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+</body>
+</html>
