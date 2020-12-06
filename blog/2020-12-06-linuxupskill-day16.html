@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="blog, challenge, linux">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>linux upskill challenge - day 16</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>December 6, 2020 - 2 minute read</h6>
+
+<h1>Day 16 : Archive files</h1>
+<p> This is part of the <a href="../challenges/linux-upskill.html">#LinuxUpSkillChallenge</a>. Don't forget to also check out the <a href="https://github.com/snori74/linuxupskillchallenge/blob/master/16.md" target="_blank">Official Instructions</a> and the <a href="https://www.reddit.com/r/linuxupskillchallenge/" target="_blank">Reddit</a> posts.</p>
+
+<div class="videoWrapper">
+  <iframe width="560" height="349"
+  src="https://www.youtube.com/embed/r2Rfg6x-5MQ"
+  frameborder="0" allowfullscreen></iframe>
+</div>
+
+<h2>1. <strong>What is archiving?</strong></h2>
+<p>Archiving is the process by which information is securely stored for longer periods of time.</p>
+<p>The Linux “tar” stands for <strong>tape archive</strong>, which was used by a large number of Linux/Unix system administrators to deal with tape backup. Remember tapes? Well, they are not dead. In fact, <a href="https://youtu.be/z4DP0Lg-qpw" target="_blank">they are very much alive</a>.</p>
+<p>The tar command rips a collection of files and directories into an archive file (often combined with a compression method) commonly called <strong>tarball</strong> or tar.</p>
+<h2>2. <strong>What is compressing?</strong></h2>
+<p>File compression is used to reduce the file size of one or more files. When a file or a group of files is compressed, the resulting “archive” often takes up 50% to 90% less disk space than the original file(s).</p>
+<p>The most used tools for compression in Linux are gzip, bzip2, and zip.</p>
+<ul>
+<li>Compress a file, replacing it with a gzipped compressed version: <code>gzip file.ext</code></li>
+<li>Uncompress a file, replacing it with the original uncompressed version: <code>gzip -d file.ext.gz</code></li>
+</ul>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ du -h big-file*
+65M	big-file
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">$ gzip big-file
+$ du -h big-file*
+60M	big-file
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">$ gzip -d big-file.gz
+$ du -h big-file*
+65M	big-file
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">$</span></span></pre>
+<h2>3. <strong>Your first tar ball</strong></h2>
+<p>Options:</p>
+<ul>
+<li><strong>c</strong>, --create : Create a new archive.</li>
+<li><strong>t</strong>, --list : List  the contents of an archive.</li>
+<li><strong>f</strong>, --file=ARCHIVE : Use  archive  file or device ARCHIVE.</li>
+<li><strong>x</strong>, --extract, --get : Extract  files  from  an archive.</li>
+<li><strong>j</strong>, --bzip2 : Filter the archive through bzip2.</li>
+<li><strong>z</strong>, --gzip, --gunzip, --ungzip : Filter the archive through gzip.</li>
+<li><strong>v</strong>, --verbose : Verbosely list files processed.</li>
+</ul>
+<p>Creating tarballs:</p>
+<ul>
+<li>Create an archive from files: <code>tar cf target.tar file1 file2 file3</code></li>
+<li>Create a gzipped archive: <code>tar czf target.tar.gz file1 file2 file3</code></li>
+</ul>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ du -h file*
+8.0K	file1
+36K	file2
+12K	file3
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">$ tar cf target.tar file1 file2 file3
+$ du -h file* target*
+8.0K	file1
+36K	file2
+12K	file3
+60K	target.tar
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">$ tar czf target.tar.gz file1 file2 file3
+$ du -h file* target*
+8.0K	file1
+36K	file2
+12K	file3
+60K	target.tar
+16K	target.tar.gz
+</span>
+<span class="syntax--meta syntax--paragraph syntax--text">$</span></span></pre>
+<h2>4. <strong>Extracting files</strong></h2>
+<ul>
+<li>List the contents of a tar file: <code>tar tvf source.tar</code></li>
+<li>Extract a (compressed) archive into the current directory: <code>tar xf source.tar[.gz|.bz2|.xz]</code></li>
+<li>Extract a (compressed) archive into the target directory: <code>tar xf source.tar[.gz|.bz2|.xz] -C directory</code></li>
+</ul>
+
+<p>For more detail on how I did each day, check out my log on <a href="https://www.reddit.com/user/livia2lima" target="_blank">Reddit</a>. Follow me on <a href="https://twitter.com/search?q=%23LinuxUpSkillChallenge%20%40livialimatweets&amp;src=typed_query&amp;f=live" target="_blank">Twitter</a> for daily updates.</p>
+
+</div>
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+</body>
+</html>
