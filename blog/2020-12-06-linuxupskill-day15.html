@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="blog, challenge, linux">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>linux upskill challenge - day 15</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>December 5, 2020 - 2 minute read</h6>
+
+<h1>Day 15 : Application repositories</h1>
+<p> This is part of the <a href="../challenges/linux-upskill.html">#LinuxUpSkillChallenge</a>. Don't forget to also check out the <a href="https://github.com/snori74/linuxupskillchallenge/blob/master/15.md" target="_blank">Official Instructions</a> and the <a href="https://www.reddit.com/r/linuxupskillchallenge/" target="_blank">Reddit</a> posts.</p>
+
+<div class="videoWrapper">
+  <iframe width="560" height="349"
+  src="https://www.youtube.com/embed/DMenSNaMiD4"
+  frameborder="0" allowfullscreen></iframe>
+</div>
+
+<h2>1. <strong>What are repositories?</strong></h2>
+<p>A repository is a storage location from which your system retrieves and installs OS updates and applications. Each repository is a collection of software hosted on a remote server (usually known as mirror) and intended to be used for installing and updating software packages on Linux systems.</p>
+<p>To check the repositories available in Ubuntu: <code>vim /etc/apt/sources.list</code></p>
+<p>The name and criteria for repositories vary between distributions, but the types of repositories usually are:</p>
+<ul>
+<li><strong>Main or Stable</strong> – officially supported software. The distro maintainer provides official support for these packages. It includes every open-source package available in the default installation.</li>
+<li><strong>Multiverse or Fusion</strong> – unsupported, closed-source, patent-encumbered software or legal-restricted packages.</li>
+<li><strong>Restricted, Third Party or Non-Free</strong> – officially supported, closed-source software.</li>
+<li>Distros often have unstable, testing and deprecaded repositories. Personal and various community-maintened repositories are also common.</li>
+</ul>
+<p>Check more about <a href="https://opensource.org/licenses" target="_blank">licenses here</a>.</p>
+<h2>2. <strong>What are packages?</strong></h2>
+<p>A package refers to a compressed file archive containing all of the files that come with a particular application. The files are usually stored in the package according to their relative installation paths on your system.</p>
+<ul>
+<li>Show information about a package: <code>apt-cache show package</code></li>
+</ul>
+<p>The rules and criteria (could be technical, could be ideological) for a package to be eligible to one or other repository is what gave birth to so many different Linux distributions.</p>
+<ul>
+<li>Show the name of each package APT knows (but not necessarily is available to
+download, installable or installed): <code>apt-cache pkgnames</code></li>
+</ul>
+<p>A distro is basically an operating system made from a software collection that is based upon the Linux kernel and a package management system. The software is usually adapted to the distribution and then packaged into software packages by the distribution’s maintainers.</p>
+<ul>
+<li>Show whether a package is installed and up to date: <code>apt-cache policy package</code></li>
+</ul>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ apt-cache policy nano
+nano:
+</span>  <span class="syntax--meta syntax--paragraph syntax--text">Installed: 4.8-1ubuntu1
+  Candidate: 4.8-1ubuntu1
+  Version table:
+</span><span class="syntax--meta syntax--bullet-point syntax--star syntax--text"> <span class="syntax--punctuation syntax--definition syntax--item syntax--text">*</span>** 4.8-1ubuntu1 500</span>
+        <span class="syntax--meta syntax--paragraph syntax--text">500 <span class="syntax--markup syntax--underline syntax--link syntax--http syntax--hyperlink">http://us-east-1.ec2.archive.ubuntu.com/ubuntu</span> focal/main amd64 Packages
+        100 /var/lib/dpkg/status</span></span></pre>
+<p>Linux follows the phylosophy that software is easier to maintain when modular (in many pieces) as opposed to monolithic (one big piece). This idea makes it possible that each package can be maintained by a different developer. Also, the division into smaller modules (focused on a limited set of functionalities) allows other packages to make use of it for their own purposes too.</p>
+<p>There is no reinventing the wheel, so it's very common for packages to interact with other packages. A <strong>dependency</strong> occurs when one package depends on another to function.</p>
+<ul>
+<li>Show dependencies for a package: <code>apt-cache depends package</code></li>
+</ul>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ apt-cache depends nano
+nano
+</span>  <span class="syntax--meta syntax--paragraph syntax--text">Depends: libc6
+  Depends: libncursesw6
+  Depends: libtinfo6
+  Conflicts: &lt;pico&gt;
+  Breaks: nano-tiny
+  Suggests: hunspell
+  Replaces: nano-tiny
+  Replaces: &lt;pico&gt;</span></span></pre>
+<ul>
+<li>Show packages that depend on a particular package: <code>apt-cache rdepends package</code></li>
+</ul>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ apt-cache rdepends nano
+nano
+Reverse Depends:
+</span>  <span class="syntax--meta syntax--paragraph syntax--text">usrmerge
+  ubuntu-standard
+  ubuntu-standard
+  junior-writing
+  dms-core
+  dms</span></span></pre>
+<h2>3. <strong>Enabling known repos</strong></h2>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">sudo add-apt-repository universe
+sudo add-apt-repository multiverse
+sudo apt update</span></span></pre>
+<h2>4. <strong>Add an extra repo</strong></h2>
+<p>You can add repositories by adding the apt repository line to the end of the sources.list file: <code>deb http://mirror-address/ &lt;repository-name&gt;</code></p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">deb <span class="syntax--markup syntax--underline syntax--link syntax--http syntax--hyperlink">http://security.ubuntu.com/ubuntu</span> focal-security multiverse</span></span></pre>
+<p><strong>ATTENTION!</strong> It’s always a good idea to backup a configuration file like sources.list before you edit it: <code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</code></p>
+<p>Personal Package Archives (PPA) is a service that allows users to upload source packages that are built and published as an apt repository.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">sudo add-apt-repository ppa:&lt;repository-name&gt;</span></span></pre>
+<p>Don’t forget to <code>sudo apt update</code> before installing packages, so you can use the repositories enabled.</p>
+
+<p>For more detail on how I did each day, check out my log on <a href="https://www.reddit.com/user/livia2lima" target="_blank">Reddit</a>. Follow me on <a href="https://twitter.com/search?q=%23LinuxUpSkillChallenge%20%40livialimatweets&amp;src=typed_query&amp;f=live" target="_blank">Twitter</a> for daily updates.</p>
+
+</div>
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+</body>
+</html>
