@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="blog, challenge, linux">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>linux upskill challenge - day 17</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>December 8, 2020 - 2 minute read</h6>
+
+<h1>Day 17 : Install from the source</h1>
+<p> This is part of the <a href="../challenges/linux-upskill.html">#LinuxUpSkillChallenge</a>. Don't forget to also check out the <a href="https://github.com/snori74/linuxupskillchallenge/blob/master/17.md" target="_blank">Official Instructions</a> and the <a href="https://www.reddit.com/r/linuxupskillchallenge/" target="_blank">Reddit</a> posts.</p>
+
+<div class="videoWrapper">
+  <iframe width="560" height="349"
+  src="https://www.youtube.com/embed/a9_hry-8Hhw"
+  frameborder="0" allowfullscreen></iframe>
+</div>
+
+<h2>1. <strong>Binaries vs Source</strong></h2>
+<p>Binaries contain computer-readable version of the application, meaning it is compiled.
+The binary files are pre-compiled, and often customised by your distro. A big part of what package managers do (like apt), is to identify and install any required dependencies, making it easier to install new packages.</p>
+<p>Source contains human-readable version of the application, meaning it has to be compiled before it can be used. The source release is the raw, uncompiled code. The dependency-check can be a bit tricky thing to resolve manually.</p>
+<h2>2. <strong>Get the source</strong></h2>
+<p>When installing packages with a package manager (like apt), the binaries are already compiled and ready to run on your distribution. Now, installing from source, you have to get the source files aggregated and compressed into that tarball.</p>
+<p>Download and uncompress the tarball. You may also enter the program uncompressed directory to work from there.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">wget -v <span class="syntax--markup syntax--underline syntax--link syntax--https syntax--hyperlink">https://nmap.org/dist/nmap-7.70.tar.bz2</span>
+tar jxvf nmap-7.70.tar.bz2
+cd nmap-7.70</span></span></pre>
+<h2>3. <strong>Prepare the environment</strong></h2>
+<p>Unix/Linux programs are often written in C, so we’ll usually need a C compiler (among other tools) to build them. So having the necessary packages to build a program is the first requirement.</p>
+<p>The build-essential is a package that contains references to numerous packages needed for building software in general.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">sudo apt install build-essential</span></span></pre>
+<h2>4. <strong>Configure the software</strong></h2>
+<p>The <code>configure</code> script responsibility is to get everything ready to build the software on your system. The configure script will check dependencies and return which packages are required to continue, if they are not installed yet.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">./configure</span></span></pre>
+<h2>5. <strong>Build the software</strong></h2>
+<p>With the configure done, invoke <code>make</code> to build the software. This runs the <strong>Makefile</strong>: a script for compiling or building the “binaries”, the executable portions of a package. The sequence defined in a Makefile launches cc or gcc (actually a preprocessor, a C/C++ compiler, and a linker). This process converts the source into the binaries.</p>
+<p>Invoking <code>make</code> generally builds all the necessary executable files for the package in question.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">make</span></span></pre>
+<h2>6. <strong>Install the software</strong></h2>
+<p>The binaries are built and ready to run, the files can be copied to their proper destinations within the system. This process is called installation. The <code>make install</code> command will perform this step as defined in the <strong>Makefile</strong>.</p>
+<p>Be aware that <code>make install</code> may need to be invoked as root, especially when moving the binaries over to the /usr/bin or /usr/local/bin directories. Using make as an ordinary user without root privileges will likely result in write access denied error messages because you lack write permission to system directories.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">make install</span></span></pre>
+<p>Check out this article for more details: <a href="https://thoughtbot.com/blog/the-magic-behind-configure-make-make-install" target="_blank">The magic behind configure, make, make install</a></p>
+
+<p>For more detail on how I did each day, check out my log on <a href="https://www.reddit.com/user/livia2lima" target="_blank">Reddit</a>. Follow me on <a href="https://twitter.com/search?q=%23LinuxUpSkillChallenge%20%40livialimatweets&amp;src=typed_query&amp;f=live" target="_blank">Twitter</a> for daily updates.</p>
+
+</div>
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+</body>
+</html>
