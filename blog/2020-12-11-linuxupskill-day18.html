@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="blog, challenge, linux">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>linux upskill challenge - day 18</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>December 11, 2020 - 1 minute read</h6>
+
+<h1>Day 18 : Logs</h1>
+<p> This is part of the <a href="../challenges/linux-upskill.html">#LinuxUpSkillChallenge</a>. Don't forget to also check out the <a href="https://github.com/snori74/linuxupskillchallenge/blob/master/18.md" target="_blank">Official Instructions</a> and the <a href="https://www.reddit.com/r/linuxupskillchallenge/" target="_blank">Reddit</a> posts.</p>
+
+<div class="videoWrapper">
+  <iframe width="560" height="349"
+  src="https://www.youtube.com/embed/sd5NFUo5JYM"
+  frameborder="0" allowfullscreen></iframe>
+</div>
+
+<h2>1. <strong>What is log rotation?</strong></h2>
+<p>In information technology, log rotation is an automated process used in system administration in which log files are compressed, moved (archived), renamed or deleted once they are too old or too big (there can be other metrics that can apply here).</p>
+<h2>2. <strong>How logs rotate?</strong></h2>
+<p>Typically, a new logfile is created periodically, and the old logfile is renamed by appending a number to the name. Each time a new log file is started, the numbers in the file names of old logfiles are increased by one, so the files “rotate” through the numbers (thus the name “log rotation”). Old logfiles whose number exceeds a threshold can then be deleted or archived off-line to save space.</p>
+<p><img src="../img/log-rotate.gif" alt=""></p>
+<h2>3. <strong>Log Rotate</strong></h2>
+<p>To edit the configuration for log rotation: <code>sudo vim /etc/logrotate.conf</code></p>
+<p>Frequency can be hourly, daily, weekly, monthly or yearly:</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"># rotate log files weekly
+weekly</span></span></pre>
+<p>Log files are rotated <strong>count</strong> times before being removed. If count is 0, old versions are removed rather than rotated.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"># keep 4 weeks worth of backlogs
+rotate 4</span></span></pre>
+<p>Old versions of log files are compressed with <code>gzip</code> by default:</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"># comment this if you want your log files uncompressed
+compress</span></span></pre>
+<h2>4. <strong>Journaling</strong></h2>
+<p>The process of collecting and managing logs is known as <strong>journaling</strong>.</p>
+<p>Linux uses <code>journalctl</code> as the utility to query all that journal information:</p>
+<ul>
+<li>Show all messages from this boot: <code>journalctl -b</code></li>
+<li>Show all messages from last boot: <code>journalctl -b -1</code></li>
+<li>Show all messages with priority level 3 (errors) from this boot:
+<code>journalctl -b --priority=3</code></li>
+<li>Follow new messages (like <code>tail -f</code> for traditional syslog): <code>journalctl -f</code></li>
+<li>Show all messages by a specific unit: <code>journalctl -u unit</code></li>
+<li>Filter messages within a time range (either timestamp or placeholders like “yesterday”):
+<code>journalctl --since now|today|yesterday|tomorrow --until YYYY-MM-DD HH:MM:SS</code></li>
+<li>Show all messages by a specific executable:
+<code>journalctl path/to/executable</code></li>
+</ul>
+
+<p>For more detail on how I did each day, check out my log on <a href="https://www.reddit.com/user/livia2lima" target="_blank">Reddit</a>. Follow me on <a href="https://twitter.com/search?q=%23LinuxUpSkillChallenge%20%40livialimatweets&amp;src=typed_query&amp;f=live" target="_blank">Twitter</a> for daily updates.</p>
+
+</div>
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+</body>
+</html>
