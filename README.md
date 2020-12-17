@@ -1,3 +1,5 @@
+[![time tracker](https://wakatime.com/badge/github/livialima/livialima-net.svg)](https://wakatime.com/badge/github/livialima/livialima-net)
+
 # Sources for livialima.net website
 The full sources for my personal website [livialima.net](https://livialima.net)
 

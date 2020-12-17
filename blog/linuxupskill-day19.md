@@ -10,6 +10,8 @@ The inode (index node) is a data structure in a Unix-style file system that desc
 
 Each inode has an inode number, which is unique within a file system. The same inode number might appear in more than one file system. However, the file system ID and inode number combine to make a unique identifier, regardless of how many file systems are mounted on your Linux system.
 
+![](../img/inode-0.png)
+
 The -i (inodes) option of the df command instructs it to display its output in numbers of inodes:
 
 ```
@@ -66,6 +68,8 @@ $
 
 Symbolic links (or soft links) are similar to shortcuts in other operating systems. They are not the actual file, or data block, instead they are simply an inode that links to a data block of another file.
 
+![](../img/inode-2.png)
+
 ```
 ln -s file link
 ```
@@ -119,6 +123,8 @@ If the link is to be deleted, the original file remains intact. If the original 
 
 Hard links do not create a separate inode, that is they simply insert an entry into the directory file that points to the same inode of the file it is linked to.
 
+![](../img/inode-1.png)
+
 ```
 ln file link
 ```
@@ -148,6 +154,8 @@ $
 ```
 
 If you delete the original file, the link will still contain the original file content, as that's not removed until there is one hard link pointing to it.
+
+![](../img/inode-3.png)
 
 ## 6. **Alias**
 
