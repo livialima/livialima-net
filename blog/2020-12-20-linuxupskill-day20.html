@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="blog, challenge, linux">
+  <meta name="author" content="Livia Lima">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="stylesheet" type="text/css" href="../main.css"/>
+  <title>linux upskill challenge - day 20</title>
+</head>
+
+<body>
+<div id="page-header">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+<!-- END OF HEADER -->
+
+<div id="page-wrap">
+<h6>December 20, 2020 - 3 minute read</h6>
+
+<h1>Day 20 : Scripting</h1>
+<p> This is part of the <a href="../challenges/linux-upskill.html">#LinuxUpSkillChallenge</a>. Don't forget to also check out the <a href="https://github.com/snori74/linuxupskillchallenge/blob/master/20.md" target="_blank">Official Instructions</a> and the <a href="https://www.reddit.com/r/linuxupskillchallenge/" target="_blank">Reddit</a> posts.</p>
+
+<div class="videoWrapper">
+  <iframe width="560" height="349"
+  src="https://www.youtube.com/embed/G7GyMuyauVk"
+  frameborder="0" allowfullscreen></iframe>
+</div>
+
+<h2>1. What is a shell script?</h2>
+<p>A shell script is a computer program designed to be run by a command-line interpreter (aka shell).</p>
+<p>Typical operations performed by shell scripts include file manipulation, program execution, and printing text.</p>
+<p>Any combination of commands and syntax recognizable by the shell can be considered a script. It can be done directly in the command-line:</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ File="my_file.txt" ; if [ -e $File ] ; then echo "The file $File exists." ; else echo "The file $File does not exist." ; fi
+The file my_file.txt does not exist.
+$</span></span></pre>
+<p>But the true power of shell scripting can be achieved by automating it into a file.</p>
+<h2>2. Start with a bang!</h2>
+<p>There are various shells and each has its own dialect. A few examples are <strong>Bourne-Again Shell</strong> (bash), <strong>Z Shell</strong> (zsh), <strong>C Shell</strong> (csh) and <strong>KornShell</strong> (ksh). How do I know which one was a script wrote for?</p>
+<p>That’s why the first line of script starts with <code>#!</code>, the she-bang (or hash-bang) followed by the path to the executable program that will interpret the script.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">#!/bin/bash</span></span></pre>
+<p>This is a special kind of comment that determine what interpreter (aka shell) to use to execute the file.</p>
+<p><strong>DISCLAIMER: this tutorial is focused on bash shell.</strong></p>
+<h2>3. Executing a script</h2>
+<p>Comments are lines of code meant for humans to understand, to make the source code easier to read. They usually begin with the hash symbol <code>#</code> and, except for the she-bang, are ignored by the shell during execution.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text"># This line will not be executed
+echo "This line will"	# but not this part</span></span></pre>
+<p>To make a file executable, you must set the file permissions to enable execution:</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ chmod +x my-script.sh</span></span></pre>
+<p>And to execute, you must call the relative path <code>./</code> followed by the file name:</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">$ ./my-script.sh</span></span></pre>
+<p><strong>NOTE:</strong> the extension <code>.sh</code> is not obligatory, any file that is executable and has the fist line start with a she-bang is, in fact, a shell script.</p>
+<h2>4. Variables</h2>
+<p>Variable is a symbolic name for a chunk of memory to which we can assign values, read and manipulate its contents. It’s a really handy resource, specially when you have to reference the same thing several times.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">AUTH_LOG="/var/log/auth.log"
+echo "Reading $AUTH_LOG ..."</span></span></pre>
+<p>Environment variables are also used in scripts:</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">echo "You are $USER and you are at $PWD"</span></span></pre>
+<h2>5. Input</h2>
+<p><strong>Positional parameters</strong></p>
+<p>A positional parameter is a variable within a shell program; its value is set from an argument specified on the command line that invokes the program.</p>
+<p><img src="../img/positional-parameters.png" alt="POSITIONAL"></p>
+<ul>
+<li><strong>$0</strong> - filename of the current script</li>
+<li><strong>$n</strong> - $1, $2, $3…</li>
+<li><strong>$#</strong> - total number of arguments provided</li>
+<li><strong>$@</strong> - print all the parameters starting at $1</li>
+<li><strong>$?</strong> - exist status of the last command</li>
+</ul>
+<h2>6. Conditionals and Loops</h2>
+<p>Conditionals allow us to make decisions, to decide whether or not to run a piece of code based upon conditions that we may set.</p>
+<p>For that we use the statements <strong>If / Elif / Else / Fi</strong>:</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">if [test]
+</span>  <span class="syntax--meta syntax--paragraph syntax--text">then
+</span>    <span class="syntax--meta syntax--paragraph syntax--text"># do something if test is true
+</span>  <span class="syntax--meta syntax--paragraph syntax--text">elif [other test]
+</span>    <span class="syntax--meta syntax--paragraph syntax--text">then
+</span>      <span class="syntax--meta syntax--paragraph syntax--text"># do something else if other test is true
+</span>    <span class="syntax--meta syntax--paragraph syntax--text">else
+</span>      <span class="syntax--meta syntax--paragraph syntax--text"># do a 3rd thing if all tests returned false
+</span><span class="syntax--meta syntax--paragraph syntax--text">fi</span></span></pre>
+<p>Anything between <strong>then</strong> and <strong>fi</strong> (if backwards) will be executed only if the test (between the square brackets) is true.</p>
+<pre class="editor-colors lang-text" style="tab-size: 2;"><span class="syntax--text syntax--plain"><span class="syntax--meta syntax--paragraph syntax--text">if [ -z "$1" ]; then
+</span>		<span class="syntax--meta syntax--paragraph syntax--text">echo -e "\nUsage: `$0` &lt;num&gt;"
+		exit 0
+</span><span class="syntax--meta syntax--paragraph syntax--text">fi</span></span></pre>
+<p>Some common tests:</p>
+<ul>
+<li><strong>-n str</strong> : the length of <code>str</code> is greater than zero</li>
+<li><strong>-z str</strong> : the lengh of <code>str</code> is zero (ie it is empty)</li>
+<li><strong>-e file</strong> : <code>file</code> exists</li>
+<li><strong>-d file</strong> : <code>file</code> exists and is a directory</li>
+<li><strong>-s file</strong> : <code>file</code> exists and it is not empty</li>
+</ul>
+
+<p>There are sooooo much more to shell scripting than this. We barely touched the surface. To learn more, check out <a href="https://ryanstutorials.net/bash-scripting-tutorial/" target="_blank">Shell Scripting Tutorial by Ryan Chadwick</a>, <a href="https://www.shellscript.sh/" target="_blank">Shell Scripting Tutorial by Steve Parker</a> and <a href="http://shellhaters.org/" target="_blank">shellhaters.org</a> to learn more.</p>
+
+<p>For more detail on how I did each day, check out my log on <a href="https://www.reddit.com/user/livia2lima" target="_blank">Reddit</a>. Follow me on <a href="https://twitter.com/search?q=%23LinuxUpSkillChallenge%20%40livialimatweets&amp;src=typed_query&amp;f=live" target="_blank">Twitter</a> for daily updates.</p>
+
+</div>
+<!-- FOOTER -->
+<div id="page-footer">
+<a href="../index.html">Main Page</a> | <a href="../challenges/linux-upskill.html">Linux Upskill Challenge</a> | <a href="posts.html">All Blogs</a>
+</div>
+</body>
+</html>
