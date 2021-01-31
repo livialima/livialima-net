@@ -13,6 +13,7 @@ You can fork its repository on [GitHub](https://github.com/kallaway/100-days-of-
 **Blog posts**:
 
 - [Days 1 to 15](../blog/2020-09-29-100code-01-15.html)
-- [Days 1 to 15](../blog/2020-10-20-100code-16-30.html)
-- [Days 1 to 15](../blog/2020-11-24-100code-31-45.html)
+- [Days 16 to 30](../blog/2020-10-20-100code-16-30.html)
+- [Days 31 to 45](../blog/2020-11-24-100code-31-45.html)
 - [Restarting...](../blog/2020-12-16-100code-restart.html)
+- [Days 1 to 30](../blog/2021-01-12-100code-01-30.html)
