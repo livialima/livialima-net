@@ -2,7 +2,7 @@
 title: Test
 subtitle: test
 tags: test
-domain: livialima.net
+domain: blog.livialima.net
 ---
 
 Enter article body here
