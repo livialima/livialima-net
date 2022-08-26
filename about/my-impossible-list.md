@@ -9,7 +9,6 @@ The impossible list should always evolve, listing experiences that lead to other
 ## Life and/or Legacy Goals
 - Be self-sufficient and location-independent
 - Help my parents and my brother to live a good life
-- Be the love of someone’s life
 - Provide an education to 100,000 people
 - Rescue a dog
 - Build an off-grid tiny house
@@ -38,8 +37,8 @@ The impossible list should always evolve, listing experiences that lead to other
 ## Geek Goals
 Based on [The Coders Bucket List](https://dev.to/remast/the-coders-bucket-list-138m)
 - ~~Bring a website to production~~ ([you are looking at this beauty!](https://livialima.net "my website"))
-- Learn to use vim and emacs
-  - [Vim done](../blog/2020-11-09-linuxupskill-day6.html "my Vim Crash Course")
+- ~~Learn to use vim~~
+- Learn to use emacs
 - Learn Shell Scripting **[in progress]**
 - Compile my own Linux Kernel
 - Install and run stuff on FreeBSD
@@ -63,8 +62,9 @@ Based on [The Coders Bucket List](https://dev.to/remast/the-coders-bucket-list-1
 
 ## Language Goals
 - ~~English: Pass as **Proficient** on [IELTS](https://takeielts.britishcouncil.org/teach-ielts/test-information/scores-explained)~~
-  - ~~Academic: overall score 7.0~~ (Sep 2015)
-  - ~~General: overall score 7.5~~ (May 2018)
+  - Academic: overall score 7.0 (Sep 2015)
+  - General: overall score 7.5 (May 2018)
+  - General: overall score 8.0 (July 2021)
 - French: become conversational (B2 level)
 
 ## Skill Goals
