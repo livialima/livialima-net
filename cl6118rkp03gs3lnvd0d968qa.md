@@ -6,7 +6,7 @@
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-25/cab6429b-841e-4de9-ae43-fcffda2321b6/user_cropped_screenshot.jpeg?tl_px=35,18&br_px=781,438&sharp=0.8&width=560 align="left")
 
-**<mark>Alert! </mark>** <mark>AWS changes its dashboard layout quite frequently! This tutorial was made in </mark> **<mark>February 2023</mark>** <mark> but if you're seeing this in the future, where you click and how things look may have changed.</mark>
+**<mark>Alert! </mark>** <mark>AWS changes its dashboard layout quite frequently! This tutorial's latest update was made in </mark> **<mark>February 2023</mark>** <mark> but if you're seeing this in the future, where you click and how things look may have changed.</mark>
 
 3\. Search for EC2
 
