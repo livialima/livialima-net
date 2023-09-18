@@ -1,0 +1,130 @@
+# Project information
+site_name: Livia Lima
+site_url: https://livialima.net
+site_author: Livia Lima
+
+# Repository
+repo_name: livialima/livialima-net
+repo_url: https://github.com/livialima/livialima-net
+edit_uri: blob/master/docs
+
+# Copyright
+copyright: Site contents (my texts, images and videos) are CC-BY-NC 4.0
+
+# Extensions
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - codehilite
+  - def_list
+  - footnotes
+  - md_in_html
+  - sane_lists
+  - smarty
+  - toc:
+      toc_depth: 4
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Configuration
+theme:
+  name: material
+  #custom_dir: material/.overrides
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    # - content.code.select
+    # - content.tabs.link
+    - content.tooltips
+    # - header.autohide
+    - navigation.expand
+    # - navigation.footer
+    - navigation.indexes
+    # - navigation.instant
+    - navigation.prune
+    # - navigation.path
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
+    # - toc.integrate
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: LL.gif
+  logo: LL.gif
+
+# Plugins
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+
+# Customization
+extra:
+  annotate:
+    json: [.s2]
+  analytics:
+    provider: google
+    property: G-LKF1067ZTR
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/livialima/
+      name: livialima @linkedin
+    - icon: fontawesome/brands/github
+      link: https://github.com/livialima
+      name: livialima @github
+    - icon: fontawesome/brands/mastodon
+      link: https://fosstodon.org/@livialima
+      name: livialima @fosstodon
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@livia2lima
+      name: livia2lima @youtube
+
+# Page tree
+nav:
+  - Home: index.md
+  - Blog: https://livialima.hashnode.dev/
+  - Linux Upskill Challenge: https://linuxupskillchallenge.org
