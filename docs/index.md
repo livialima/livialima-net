@@ -43,7 +43,7 @@ My other interests can be found throughout my [social media accounts](https://bi
 
 # Awesome support from you
 
-If you appreciate my work, you can [buy me a beer](https://www.buymeacoffee.com/livialima "Thanks!") or become my [patron](https://www.patreon.com/livialima "support me on Patreon") if you feel extra generous.
+If you appreciate my work, you can [buy me a coffee](https://www.buymeacoffee.com/livialima "Thanks!") or become my [sponsor](https://github.com/sponsors/livialima/ "sponsor me on GitHub") if you feel extra generous.
 
 ---------------------------
 
