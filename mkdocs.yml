@@ -52,6 +52,7 @@ markdown_extensions:
 theme:
   name: material
   #custom_dir: material/.overrides
+  custom_dir: overrides
   features:
     - announce.dismiss
     - content.action.edit
@@ -129,3 +130,4 @@ nav:
   - Home: index.md
   - Blog: https://livialima.hashnode.dev/
   - Linux Upskill Challenge: https://linuxupskillchallenge.org
+  - Test: test-page.md
