@@ -7,29 +7,33 @@ hide:
 
 [![Photo of Livia Lima](LL.jpg "Click to see my LinkedIn profile")](https://www.linkedin.com/in/livialima/)
 
-My name is Livia Nóbrega Lima, I am originally from Brazil and a huge nerd. I love technology and getting my hands into the CLI to try something new. Let me learn and I will never be bored.
+Hi! 🖐🏻 I'm Livia Lima, a tech enthusiast with expertise in Linux and open-source technologies. Through platforms like LinkedIn, GitHub, and YouTube, I actively share knowledge and resources in the tech community. My involvement in projects like the [Linux Upskill Challenge](https://linuxupskillchallenge.org) showcases my dedication to community learning and development. I've been publishing technical tutorials on my [YouTube](https://www.youtube.com/@livia2lima) channel and I'm committed to promoting open-source culture and empowering others in the field. 
 
-My main expertise is network support and administration. I've been working with this in various forms for over 10 years. I executed projects, troubleshooted issues, trained staff and was in charge of governance. I also worked with storage solutions and application support.
+I usually combine that excitement with 15 years of experience supporting IT infrastructure (network, storage, and application servers), delivering great customer service.
 
-In my spare time, I've been publishing technical tutorials on my [YouTube](https://www.youtube.com/@livia2lima) channel, and being responsible for the [Linux Upskill Challenge](https://linuxupskillchallenge.org).
+Outside of technology, I enjoy [music](https://open.spotify.com/user/12163736583 "the music I listen to"), [craft beer](https://untappd.com/user/livialima "the beers I drink"), [comic books](https://www.goodreads.com/user/show/113604841-livia-lima "the books I read") and rugby. I've done [crossfit](https://games.crossfit.com/athlete/1689757 "Shame on me, I haven't been in a box in years!") in the past but today I keep my stress levels down by doing some light hiking and drinking tea.
 
-Outside of technology, I enjoy [music](https://open.spotify.com/user/12163736583 "the music I listen to"), [craft beer](https://untappd.com/user/livialima "the beers I drink"), [comic books](https://www.goodreads.com/user/show/113604841-livia-lima "the books I read") and rugby. I've done [crossfit](https://games.crossfit.com/athlete/1689757 "Shame on me, I haven't been in a box in years!") in the past but today I keep my stress levels down by doing some light exercise and drinking tea.
+Currently looking for a new and challenging position as a Technical Support Specialist where I can apply all that experience to drive positive change.
 
 # Awesome stuff I did
 
 I'm a member of the [Linux Professional Institute](https://people.lpi.org/m/LPI000190681), LPIC-1, LFCA and specialized in other infrastructure technologies like Storage and Network. I've got a few shiny badges on [Credly](https://www.credly.com/users/livia-lima/badges?sort=-state_updated_at&page=1) to prove it. 
 
-Here's a short list of things I've done while working (or off-hours) that I'm proud of:
+Here's a short list of things I've done that I'm proud of:
 
-**Created the Linux Upskill Challenge video-series** as a support material for the [month-long course](https://linuxupskillchallenge.org). As a result, I also became the [official mantainer](https://github.com/livialima/linuxupskillchallenge) for the project.
+**I'm the Project Lead for the [Linux Upskill Challenge](https://linuxupskillchallenge.org)**, a volunteer project that helps those who want to learn more about how to operate a Linux server. Since 2020, I've helped about **30,000 students** from all over the world in their Linux journey.
+
+In addition to the written material, I produced and published a complimentary video series on YouTube, achieving a total view count of 50,000+ and receiving positive feedback from 95% of viewers. We just hit **1k subscribers**!
+
+My aim was to simplify the most basic concepts of Linux for system administration.
 
 **Created a static website on AWS from scratch** (yes, this one you are seeing right now) as a personal project. A lot has changed since then, I'm no longer on AWS but I can get myself around with static content hosting now.
 
-**Saved 50k USD to client (a major US bank)** by applying proper governance to their inventory of network circuits and telephone lines.
+**I generated $50k in cost savings** for a major US bank client by implementing efficient governance measures for their network circuit and telephone line inventory, optimizing utilization and reducing unnecessary expenses.
 
-**Increased to 35% the rate of Cisco certified analysts** in the technical staff of a network operations centre. Entry level candidates that get in today are still trained in the framework I developed.
+**I increased Cisco certified analysts by 35%** through structured training and coaching. Implemented classroom courses and skill assessments, enhancing technical knowledge to meet delivery demands. Supervised global learning plans, validating technical scope, and aiding in recruitment for Network Support Specialists, ensuring effective training and support readiness.
 
-**Transitioned the scope of Voice support** to integrate to my former Network team. I worked closely with stakeholders to deploy the process and structured training. I was able to complete the transition in under 1 year, with 200+ technical articles in place and 8+ network analysts fully trained.
+**I successfully transitioned Voice support** to integrate to my former Network team, increasing efficiency by 20% through structured training and process deployment. This streamlined operations, ensuring seamless integration within the network infrastructure and reducing resolution time by 15%.
 
 # Awesome stuff I post
 
