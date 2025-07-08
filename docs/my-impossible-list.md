@@ -17,22 +17,27 @@ The impossible list should always evolve, listing experiences that lead to other
 - [ ] Help my parents and my brother to live a good life
 - [ ] Share a happy authentic life with a partner
 - [ ] Build an off-grid tiny house
-- [ ] Rescue a dog
+- [ ] Rescue a dog and/or cat (could be multiple)
 - [ ] Provide an education to 100,000 people
 - [ ] Help people expand their potential **(always in progress)**
 
-## Health/Fitness Goals
-- [x] Get out of anti-depressants
-- [ ] Get out of high blood pressure medication
-- [ ] Get my first pull-up
-- [ ] Deadlift 150kg (330lbs)
-- [ ] Back Squat 100kg (200lbs)
-- [ ] Clean and Jerk 70kg (150lbs)
-- [ ] Snatch 45kg (100lbs)
-- [ ] Bench Press 45kg (100lbs)
-- [ ] Finish a [CrossFit Open](https://games.crossfit.com/open) within the Top 1000 overall rank worldwide for my division
-- [ ] Complete the [One Ton Total](https://otc.securechkout.com/join) challenge (500kg/1200lbs for women)
-- [ ] Complete a [Spartan Race](https://www.spartan.com/)
+## Language Goals
+Based on the [CEFR](https://en.wikipedia.org/wiki/Common_European_Framework_of_Reference_for_Languages#Common_reference_levels)
+
+- [x] English: Pass as a **Proficient User** (C1 level) on [IELTS](https://takeielts.britishcouncil.org/teach-ielts/test-information/scores-explained) - did it multiple times for different reasons
+    * [x] General: overall score 8.0 (January 2025)
+    * [x] Academic: overall score 7.0 (March 2023)
+    * [x] General: overall score 8.0 (July 2021)
+    * [x] General: overall score 7.5 (May 2018)
+    * [x] Academic: overall score 7.0 (Sep 2015)
+- [x] Spanish
+    - [x] become conversational (B1/B2 level)
+    - [ ] become fluent (C1/C2 level)
+- [ ] French: Pass as an **Independent User** (B1/B2 level) on [TCF Canada](https://www.france-education-international.fr/test/tcf-canada?langue=en) across all skills (Listening, Reading, Speaking and Writing)
+    * [x] 3rd TCF attempt: scores stagnant and burnout (June 2025)
+    * [x] 2nd TCF attempt: Speaking increased to A2 (May 2025)
+    * [x] 1st TCF attempt: Speaking still A1, but Reading and Listening already at B1 (April 2025)
+    * [x] Start taking classes (February 2025)
 
 ## Professional Goals
 - [ ] Create an online course
@@ -68,16 +73,18 @@ Based on [The Coders Bucket List](https://dev.to/remast/the-coders-bucket-list-1
 - [ ] Go to Munich's [Oktoberfest](https://www.oktoberfest.de/en)
 - [ ] Visit [Delirium Village](https://www.deliriumvillage.com/) in Brussels and try as much of the 2000 beer options as possible (or as much as my liver can take)
 
-## Language Goals
-- [x] English: Pass as **Proficient** on [IELTS](https://takeielts.britishcouncil.org/teach-ielts/test-information/scores-explained) - did it multiple times for different reasons
-    * [x] Academic: overall score 7.0 (March 2023)
-    * [x] General: overall score 8.0 (July 2021)
-    * [x] General: overall score 7.5 (May 2018)
-    * [x] Academic: overall score 7.0 (Sep 2015)
-- [x] Spanish
-    - [x] become conversational (B2 level)
-    - [ ] become fluent (C1/C2 level)
-- [ ] French: become conversational (B2 level)
+## Health/Fitness Goals
+- [x] Get out of anti-depressants
+- [ ] Get out of high blood pressure medication
+- [ ] Get my first pull-up
+- [ ] Deadlift 150kg (330lbs)
+- [ ] Back Squat 100kg (200lbs)
+- [ ] Clean and Jerk 70kg (150lbs)
+- [ ] Snatch 45kg (100lbs)
+- [ ] Bench Press 45kg (100lbs)
+- [ ] Finish a [CrossFit Open](https://games.crossfit.com/open) within the Top 1000 overall rank worldwide for my division
+- [ ] Complete the [One Ton Total](https://otc.securechkout.com/join) challenge (500kg/1200lbs for women)
+- [ ] Complete a [Spartan Race](https://www.spartan.com/)
 
 ## Skill Goals
 - [ ] Learn archery
@@ -107,14 +114,11 @@ Based on [The Coders Bucket List](https://dev.to/remast/the-coders-bucket-list-1
     * [x] Jantar Medieval VIII Edition ([2016](https://www.facebook.com/media/set/?set=a.497436407112636))
 - [ ] Open Source Summit
 - [ ] Cisco Live
-- [ ] AWS Summit
-- [ ] PyCon
 - [ ] Deftones concert
 - [ ] Download Festival
 - [ ] Glastonbury Festival
 - [ ] Red Rocks Festival
 - [ ] Comic Con
-- [ ] CrossFit Games
 - [ ] Rugby Six Nations Championship (a Scotland and/or Ireland match)
 - [ ] European Rugby Champions Cup finals
 - [ ] NHL finals
@@ -125,7 +129,7 @@ Based on [The Coders Bucket List](https://dev.to/remast/the-coders-bucket-list-1
 ## Travel Goals
 - [x] [Canada](https://maps.app.goo.gl/hbKv1QSHTjQgCeNM9) (I live here now)
     - [x] [Halifax, NS](https://maps.app.goo.gl/wbyqC9d9fcx2bCXr8) (2022)
-    - [x] [Toronto, ON](https://maps.app.goo.gl/rbjMm97YEivw27r3A) (2024)
+    - [x] [Toronto, ON](https://maps.app.goo.gl/rbjMm97YEivw27r3A) (2024) - and I live in just a couple hours away, I'm there frequently
     - [ ] [Ottawa, ON](https://maps.app.goo.gl/6yKCqyMdW5SnJsa5A)
     - [ ] [Québec City, QC](https://maps.app.goo.gl/vaNstKFXg99gGzgp7)
     - [ ] [Lunenburg, NS](https://maps.app.goo.gl/4MQrUyJSy9nDVMjm7)
