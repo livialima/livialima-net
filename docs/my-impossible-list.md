@@ -128,8 +128,8 @@ Based on [The Coders Bucket List](https://dev.to/remast/the-coders-bucket-list-1
 
 ## Travel Goals
 - [x] [Canada](https://maps.app.goo.gl/hbKv1QSHTjQgCeNM9) (I live here now)
-    - [x] [Halifax, NS](https://maps.app.goo.gl/wbyqC9d9fcx2bCXr8) (2022)
-    - [x] [Toronto, ON](https://maps.app.goo.gl/rbjMm97YEivw27r3A) (2024) - and I live in just a couple hours away, I'm there frequently
+    - [x] [Halifax, NS](https://maps.app.goo.gl/wbyqC9d9fcx2bCXr8) ([2022](https://www.instagram.com/stories/highlights/18077094721315419/))
+    - [x] [Toronto, ON](https://maps.app.goo.gl/rbjMm97YEivw27r3A) ([2024](https://www.instagram.com/stories/highlights/18028112513030137/)) - and I live in just a couple hours away, I'm there frequently
     - [ ] [Ottawa, ON](https://maps.app.goo.gl/6yKCqyMdW5SnJsa5A)
     - [ ] [Québec City, QC](https://maps.app.goo.gl/vaNstKFXg99gGzgp7)
     - [ ] [Lunenburg, NS](https://maps.app.goo.gl/4MQrUyJSy9nDVMjm7)
