@@ -129,7 +129,7 @@ extra:
 nav:
   - Home: index.md
 #  - Blog: blog/index.md
-  - Blog: https://livialima.hashnode.dev/
+#  - Blog: https://livialima.hashnode.dev/
   - My Impossible List: my-impossible-list.md
   - Linux Upskill Challenge: https://linuxupskillchallenge.org
 #  - Test: test-page.md
