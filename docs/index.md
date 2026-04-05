@@ -7,48 +7,33 @@ hide:
 
 [![Photo of Livia Lima](LL.jpg "Click to see my LinkedIn profile")](https://www.linkedin.com/in/livialima/)
 
-Hi! 🖐🏻 I'm Livia Lima, a tech enthusiast with expertise in Linux and open-source technologies. Through platforms like LinkedIn, GitHub, and YouTube, I share knowledge and resources in the tech community. My involvement in projects like the [Linux Upskill Challenge](https://linuxupskillchallenge.org) showcases my dedication to community learning and development. I've been publishing technical tutorials on my [YouTube](https://www.youtube.com/@livia2lima) channel and I'm committed to promoting open-source culture and empowering others in the field. 
+Hi! 🖐🏻 I'm Livia Lima — a Linux professional, open-source advocate, and recovering corporate IT person currently plotting my return to Canada.
 
-I usually combine that excitement with 15 years of experience supporting IT infrastructure (network, storage, and application servers), delivering great customer service.
+I spent 15 years supporting IT infrastructure — networks, storage, application servers — at places like IBM, Dell, and a few companies you've probably never heard of. More recently, I went back to school in Ontario, earned a Canadian college credential in network administration, and briefly worked as a hands-on prototype technician. It was a great experience, and taught me that I enjoy soldering components as much as troubleshooting servers.
 
-Outside of technology, I enjoy [music](https://open.spotify.com/user/12163736583 "the music I listen to"), [craft beer](https://untappd.com/user/livialima "the beers I drink"), [comic books](https://www.goodreads.com/user/show/113604841-livia-lima "the books I read") and rugby. I've done [crossfit](https://games.crossfit.com/athlete/1689757 "Shame on me, I haven't been in a box in years!") in the past but today I keep my stress levels down by doing some light hiking and drinking tea.
+Through platforms like LinkedIn, GitHub, and YouTube I share technical knowledge and resources with the broader community. I'm also the maintainer of the [Linux Upskill Challenge](https://linuxupskillchallenge.org), a free and open-source course that has helped 30,000+ learners around the world build confidence running a Linux server. I'm proud of that one.
 
-Currently working outside my comfort zone as a Prototype Technician. Being more hands-on with electrical and mechanical components has been challenging and very rewarding! I don't know when (or if) I'll be back to IT, but I've been living one day at a time since I moved to Canada from Brazil. It's a life changing experience and for now I'm just enjoying the journey.
+Outside of technology, I enjoy [music](https://open.spotify.com/user/12163736583 "the music I listen to"), craft beer, comic books and the occasional rugby match. I did [crossfit](https://games.crossfit.com/athlete/1689757 "Shame on me, I haven't been in a box in years!") for a while but today I keep the stress levels down with tea, the gym, and light hiking. Walking just helps me think.
 
-# Awesome stuff I did
+# Stuff I did that I'm proud of
 
-I'm a member of the [Linux Professional Institute](https://people.lpi.org/m/LPI000190681), LPIC-1, LFCA and specialized in other infrastructure technologies like Storage and Network. I've got a few shiny badges on [Credly](https://www.credly.com/users/livia-lima/badges?sort=-state_updated_at&page=1) to prove it. 
+I'm a member of the [Linux Professional Institute](https://people.lpi.org/m/LPI000190681), LPIC-1 certified, with a few other shiny badges on [Credly](https://www.credly.com/users/livia-lima) if you're into that sort of thing. Here's the human version of my CV:
 
-Here's a short list of things I've done that I'm proud of:
+**I lead the [Linux Upskill Challenge](https://linuxupskillchallenge.org).** It's a free, open-source, 
+month-long Linux server course that I've been maintaining since 2020. More than 30,000 learners have gone through it. I also created a companion [YouTube](https://www.youtube.com/@livia2lima) series to go with it — 50,000+ views, 1.5k subscribers, and keeps growing. My goal has always been to make Linux less intimidating for people who want practical skills without paying for a bootcamp.
 
-**I'm the Project Lead for the [Linux Upskill Challenge](https://linuxupskillchallenge.org)**, a volunteer project that helps those who want to learn more about how to operate a Linux server. Since 2020, I've helped about **30,000 students** from all over the world in their Linux journey.
+**I surrounded myself with Cisco certified analysts by just... teaching people.** Support life can be hard, and I wanted my peers to have better chances to grow. So I started teaching what I knew, writing training material, coaching people. The number of analysts who went from zero network experience to Cisco certified shot up 35% in two years. Many of them moved on to better jobs, and honestly, that’s one of the things I’m proudest of. I hope everyone who ever sat through one of my sessions is doing well.
 
-In addition to the written material, I produced and published a complimentary video series on YouTube, achieving a total view count of 50,000+ and receiving positive feedback from 95% of viewers. We just hit **1k subscribers** in 2024, and continue to grow!
+**I saved a major US bank $50k with a spreadsheet and a lot of coffee.** Their network circuit and telephone line inventory was a mess — they were paying another company to manage a mess that didn't need to exist. I noticed the pattern, I documented the waste, and I shared the findings. The other company does not like me very much. Apparently this is called "implementing efficient governance measures." Who knew.
 
-My goal was to simplify the most basic concepts of Linux for system administration.
+**I merged two teams without burning the department down.** Transitioning Voice support into the Network team could have been a disaster. The training and process work we had already put in place (remember that Cisco thing?) meant people weren’t completely lost when unfamiliar incidents started arriving. 20% efficiency improvement for the metrics people, significantly fewer panicked Slack messages for everyone else.
 
-**Created a static website on AWS from scratch** - yes, this one you are seeing right now. It started as a personal project to get my feet wet in the AWS pound. A lot has changed since then, I'm no longer on AWS but I can get myself around with static content hosting now.
+# Where else to find me
 
-**Surrounded myself with Cisco certified analysts** by training my peers. I just wanted my folks to succeed (support life can be hard, y'all), so I started teaching what I knew and learning a lot along the way. Through structured training and coaching, the number of analysts that had no previous experience with network technology to Cisco certified professionals shot up 35% in a spam of 2 years. Many of them left the company because a certification gave them more chances at a better life and this is what I cherish the most. While this experience showed me how to implement technical courses and skill assessments, I hope everyone that ever attended one of my classes is happy today with the knowledge I shared.
+If you appreciate what I do, you can [buy me a coffee](https://www.buymeacoffee.com/livialima "Thanks!") or become my [GitHub sponsor](https://github.com/sponsors/livialima/ "sponsor me on GitHub").
 
-**Successfully mishmashed two teams without burning the department to the ground**, meaning I transitioned Voice support to integrate to my former Network Support team. Anyone that experienced a merge knows the nightmare it can be. All the structured training that I was doing beforehand (see the Cisco bit before) enabled the whole department to not go completely nuts when we started taking incidents we never have seen before. For the higher-ups, I increased efficiency by 20% through process deployment. For my peers, this streamlined operations, making the integration within the network infrastructure a lot less painful and reducing resolution time by 15%.
-
-**Saved $50k** for a major US bank client. Their network circuit and telephone line inventory was a mess, they were actually paying another company to manage that mess. Every day I received maintenance notices for lines that were no longer in use. I got fed-up and decided to share my findings with them - that's called "implementing efficient governance measures" in corporate jargon. That other company don't like me very much. It's impressive what a spreadsheet and a lot of coffee can do.
-
-# Awesome stuff I post
-
-My other interests can be found throughout my [social media accounts](https://bio.link/livialima), each to some degree.
-
-*   [YouTube](https://www.youtube.com/@livia2lima)
-*   [Mastodon](https://fosstodon.org/@livialima)
-*   [LinkedIn](https://www.linkedin.com/in/livialima/)
-*   [Instagram](https://www.instagram.com/livia2lima/)
-*   [Twitch](https://twitch.tv/livialimastreams)
-
-# Awesome support from you
-
-If you appreciate my work, you can [buy me a coffee](https://www.buymeacoffee.com/livialima "Thanks!") or become my [sponsor](https://github.com/sponsors/livialima/ "sponsor me on GitHub") if you feel extra generous.
+But a shoutout on [Mastodon](https://fosstodon.org/@livialima) or a recommendation/endorsement on [LinkedIn](https://www.linkedin.com/in/livialima/) will make me just as happy.
 
 ---------------------------
 
-**DISCLAIMER : The opinions expressed on this page are my own views and not those of any of my employers, past or present. This page is run as an independent blog.**
+*The opinions on this page are entirely my own and not those of any employer, past or present.*
