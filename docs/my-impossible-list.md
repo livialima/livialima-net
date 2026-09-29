@@ -24,20 +24,18 @@ The impossible list should always evolve, listing experiences that lead to other
 ## Language Goals
 Based on the [CEFR](https://en.wikipedia.org/wiki/Common_European_Framework_of_Reference_for_Languages#Common_reference_levels)
 
-- [x] English: Pass as a **Proficient User** (C1 level) on [IELTS](https://takeielts.britishcouncil.org/teach-ielts/test-information/scores-explained) - did it multiple times for different reasons
+- [x] English: Pass as a **Proficient User** (C1/C2 level) on [IELTS](https://takeielts.britishcouncil.org/teach-ielts/test-information/scores-explained) - did it multiple times for different reasons
     * [x] General: overall score 8.0 (January 2025)
     * [x] Academic: overall score 7.0 (March 2023)
     * [x] General: overall score 8.0 (July 2021)
     * [x] General: overall score 7.5 (May 2018)
     * [x] Academic: overall score 7.0 (Sep 2015)
-- [x] Spanish
-    - [x] become conversational (B1/B2 level)
-    - [ ] become fluent (C1/C2 level)
-- [ ] French: Pass as an **Independent User** (B1/B2 level) on [TCF Canada](https://www.france-education-international.fr/test/tcf-canada?langue=en) across all skills (Listening, Reading, Speaking and Writing)
-    * [x] 3rd TCF attempt: scores stagnant and burnout (June 2025)
-    * [x] 2nd TCF attempt: Speaking increased to A2 (May 2025)
-    * [x] 1st TCF attempt: Speaking still A1, but Reading and Listening already at B1 (April 2025)
-    * [x] Start taking classes (February 2025)
+- [x] French: Pass as an **Independent User** (B1/B2 level) on [TCF Canada](https://www.france-education-international.fr/test/tcf-canada?langue=en) across all skills (Listening, Reading, Speaking and Writing)
+    * [ ] Pass at B2 level
+    * [x] B1 level (April 2026)
+- [x] Spanish (no intention to take a proficiency test yet)
+    - [ ] Pass as C1/C2 level - *I'll probably get back to it when I'm done with French*
+    - [x] B1/B2 level: I took classes between 2020-2022 and participated in a [Spanish Conversation Meetup](https://www.meetup.com/halifax-spanish-meetup/) with native speakers in the months I lived in [Halifax, NS](#travel-goals), so I'm pretty confident I have the skills
 
 ## Professional Goals
 - [ ] Create an online course
@@ -105,13 +103,17 @@ Based on [The Coders Bucket List](https://dev.to/remast/the-coders-bucket-list-1
 - [ ] Play an instrument available at a public space
 - [ ] Have an epic Nerf gun battle
 
-## Events to Attend (in person, not online)
+## Events to Attend
+(in person, not online)
+
 - [x] [FISL - Fórum Internacional de Software Livre](https://web.archive.org/web/20150713055504/http://softwarelivre.org/fisl16/o-evento/sobre-o-fisl) ([2015](https://www.facebook.com/media/set/?set=a.1424877627701838)) : **best thing I've ever done**. Absolutely life changing. So sad it's over.
-- [x] Medieval themed events
+- [x] Medieval/Renaissance fairs
     * [x] Jantar Medieval VI Edition ([2014](https://www.facebook.com/media/set/?set=a.240107426178870))
     * [x] Noites Bárbaras V Edition ([2014](https://www.facebook.com/media/set/?set=a.260698884119724))
     * [x] Jantar Medieval VII Edition ([2015](https://www.facebook.com/media/set/?set=a.1424809451041989))
     * [x] Jantar Medieval VIII Edition ([2016](https://www.facebook.com/media/set/?set=a.497436407112636))
+- [x] K-Pop concert
+  - [x] BLACKPINK ([2025](https://www.instagram.com/stories/highlights/18066307099944564/))
 - [ ] Open Source Summit
 - [ ] Cisco Live
 - [ ] Deftones concert
