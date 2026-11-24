@@ -1,5 +1,7 @@
 /drafts/
 /vid/
 /paypal.txt
-docs/blog/
-docs/test-page.md
+/public/
+/resources/
+.hugo_build.lock
+.DS_Store
