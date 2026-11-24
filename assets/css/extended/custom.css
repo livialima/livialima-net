@@ -1,0 +1,30 @@
+/* Deep purple accent for links and interactive elements */
+:root {
+    --accent: #7c3aed;
+    --accent-dark: #a78bfa;
+}
+
+a {
+    color: var(--accent);
+}
+
+a:hover {
+    color: var(--accent-dark);
+}
+
+:root[data-theme="dark"] a {
+    color: var(--accent-dark);
+}
+
+:root[data-theme="dark"] a:hover {
+    color: var(--accent);
+}
+
+.profile .buttons .button {
+    background: var(--accent);
+    color: #fff;
+}
+
+.profile .buttons .button:hover {
+    background: var(--accent-dark);
+}
